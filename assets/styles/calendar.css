@@ -1,0 +1,519 @@
+/* FullCalendar Custom Styling */
+#calendar {
+    min-height: 600px;
+}
+
+.fc {
+    font-family: 'Inter', sans-serif;
+}
+
+.fc-toolbar {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.fc-toolbar-title {
+    font-family: Playfair Display, serif;
+    font-weight: 700;
+}
+
+
+
+.fc-button {
+    background-color: #1e3a8a !important;
+    border-color: #1e3a8a !important;
+    color: #fff !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+}
+
+    .fc-button:hover {
+        background-color: #1e40af !important;
+        border-color: #1e40af !important;
+    }
+
+.fc-button-primary:not(:disabled):active,
+.fc-button-primary:not(:disabled).fc-button-active {
+    background-color: #1e3a8a !important;
+    border-color: #1e3a8a !important;
+}
+
+.fc-today-button {
+    background-color: #3b82f6 !important;
+    border-color: #3b82f6 !important;
+}
+
+    .fc-today-button:hover {
+        background-color: #2563eb !important;
+        border-color: #2563eb !important;
+    }
+
+.fc-daygrid-day {
+    border-color: #e9ecef;
+}
+
+.fc-day-today {
+    background-color: #fff !important;
+}
+
+.fc-col-header-cell {
+    background-color: #f4f6f7;
+    border-color: #dee2e6;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.75rem;
+}
+
+.fc-daygrid-day-number {
+    color: #2c3e50;
+    font-weight: normal;
+}
+
+/* Event Styling */
+.fc-event {
+    border-radius: 0.25rem;
+    padding: 2px 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+}
+
+.fc-event-press {
+    background-color: #1e3a8a;
+    color: #fff;
+}
+
+/* Category-specific event colors - using CSS variables */
+.fc-event-press {
+    background-color: var(--category-color-press);
+    color: #fff;
+}
+
+.fc-event-presentation {
+    background-color: var(--category-color-presentation);
+    color: #fff;
+}
+
+.fc-event-conference {
+    background-color: var(--category-color-conference);
+    color: #fff;
+}
+
+.fc-event-workshop {
+    background-color: var(--category-color-workshop);
+    color: #fff;
+}
+
+.fc-event-seminar {
+    background-color: var(--category-color-seminar);
+    color: #fff;
+}
+
+.fc-event-meeting {
+    background-color: var(--category-color-meeting);
+    color: #fff;
+}
+
+.fc-event-exhibition {
+    background-color: var(--category-color-exhibition);
+    color: #fff;
+}
+
+.fc-event-award {
+    background-color: var(--category-color-award);
+    color: #fff;
+}
+
+.fc-event-hackathon {
+    background-color: var(--category-color-hackathon);
+    color: #fff;
+}
+
+.fc-event-others {
+    background-color: var(--category-color-others);
+    color: #fff;
+}
+
+.fc-event:hover {
+    opacity: 0.9;
+}
+
+.fc-multimonth-month {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    padding: 1.25rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.075);
+    transition: all 0.3s ease;
+}
+
+    .fc-multimonth-month:hover {
+        box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15);
+        transform: translateY(-2px);
+    }
+
+.fc-multimonth-title {
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #2c3e50;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.fc-multimonth .fc-col-header-cell {
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #6c757d;
+    padding: 0.5rem 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: none !important;
+    border-bottom: 2px solid #e9ecef !important;
+    background-color: transparent !important;
+}
+
+
+.fc-multimonth .fc-daygrid-day {
+    background-color: #fff;
+    padding: 0.5rem 0.25rem;
+    font-size: 0.75rem;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    border: 1px solid #f4f6f7;
+    transition: all 0.2s ease;
+}
+
+.fc-multimonth .fc-daygrid-day-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 2.5rem;
+}
+
+.fc-multimonth .fc-daygrid-day:hover {
+    background-color: #f4f6f7;
+}
+
+.fc-multimonth .fc-daygrid-day-number {
+    margin-bottom: 2px;
+    color: #2c3e50;
+    font-weight: normal;
+    flex-shrink: 0;
+}
+
+.fc-multimonth .fc-day-other,
+.fc-multimonth .fc-day-disabled {
+    background-color: #f4f6f7 !important;
+}
+
+    .fc-multimonth .fc-day-other .fc-daygrid-day-number,
+    .fc-multimonth .fc-day-disabled .fc-daygrid-day-number {
+        color: #adb5bd !important;
+        font-weight: normal;
+    }
+
+.fc-multimonth .fc-daygrid-day.fc-day-has-events .fc-daygrid-day-number {
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.fc-multimonth .fc-daygrid-day.fc-day-has-events:hover {
+    transform: scale(1.05);
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Event bars styling for yearly view */
+.fc-multimonth .fc-daygrid-day-events {
+    margin-top: 1.5rem;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.fc-multimonth .fc-event {
+    height: 3px;
+    margin: 0;
+    padding: 0;
+    border-radius: 5px;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+
+/* Ensure events don't show text */
+.fc-multimonth .fc-event-title {
+    display: none;
+}
+
+
+
+.fc-multimonth .fc-multimonth-daygrid-table {
+    border-spacing: 2px;
+    border-collapse: separate;
+}
+
+.fc-multimonth .fc-day-today {
+    border: 2px solid #FF5A24 !important;
+    background-color: #f7dede !important;
+}
+
+    .fc-multimonth .fc-day-today .fc-daygrid-day-number {
+        font-weight: 700 !important;
+        color: #2c3e50 !important;
+    }
+
+    .fc-multimonth .fc-day-today.fc-day-has-events .fc-daygrid-day-number {
+        font-weight: 700 !important;
+        color: #2c3e50 !important;
+    }
+
+/* Event Tooltip */
+.event-tooltip {
+    position: fixed;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    z-index: 10000;
+    max-width: 300px;
+    display: none;
+    pointer-events: none; /* Prevent tooltip from intercepting mouse events */
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+    .event-tooltip.show {
+        display: block;
+        opacity: 1;
+    }
+
+.event-tooltip-title {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #1e3a8a;
+}
+
+.event-tooltip-type {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+    /* Event tooltip type colors - using CSS variables */
+    .event-tooltip-type.press {
+        background-color: var(--category-color-press);
+        color: #fff;
+    }
+
+    .event-tooltip-type.presentation {
+        background-color: var(--category-color-presentation);
+        color: #fff;
+    }
+
+    .event-tooltip-type.conference {
+        background-color: var(--category-color-conference);
+        color: #fff;
+    }
+
+    .event-tooltip-type.workshop {
+        background-color: var(--category-color-workshop);
+        color: #fff;
+    }
+
+    .event-tooltip-type.seminar {
+        background-color: var(--category-color-seminar);
+        color: #fff;
+    }
+
+    .event-tooltip-type.meeting {
+        background-color: var(--category-color-meeting);
+        color: #fff;
+    }
+
+    .event-tooltip-type.exhibition,
+    .event-tooltip-type.award,
+    .event-tooltip-type.hackathon,
+    .event-tooltip-type.others {
+        background-color: var(--category-color-others);
+        color: #fff;
+    }
+
+.event-tooltip-desc {
+    font-size: 0.875rem;
+    color: #4b5563;
+    line-height: 1.5;
+}
+
+/* Month Summary Expanded State - subtle, compact */
+.month-summary-item.expanded {
+    border-left: 2px solid #93c5fd;
+    padding-left: 0.5rem;
+    margin-left: -0.5rem;
+    transition: border-color 0.2s ease;
+}
+
+    .month-summary-item.expanded .month-header h4 {
+        color: #1e40af;
+    }
+
+    .month-summary-item.expanded .category-summary {
+        color: #475569;
+    }
+
+.month-summary-item:hover {
+    background-color: #f8fafc;
+}
+
+.month-summary-item.expanded .month-header {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+.month-summary-item.expanded:hover .month-header {
+    background-color: transparent;
+}
+
+/* Compact event details when expanded */
+.month-summary-item .event-details {
+    max-height: 12rem;
+    margin-top: 0.5rem;
+}
+
+.month-summary-item .event-details > div {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
+/* View Summary: no horizontal scroll, wrap content */
+.viewport-summary-inner,
+#viewport-summary {
+    overflow-x: hidden;
+    min-width: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.category-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.5rem;
+}
+
+.category-summary .text-xs {
+    white-space: nowrap;
+}
+
+/* Responsive - Simplified breakpoints */
+@media (max-width: 1024px) {
+    .fc-multimonth {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #calendar {
+        min-height: min(72vh, 800px);
+    }
+
+    .fc-toolbar {
+        
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .fc-toolbar-chunk {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .fc-toolbar-title {
+        font-size: 1.2rem !important;
+    }
+
+    .fc-button {
+        padding: 0.35rem 0.6rem !important;
+        font-size: 0.8rem !important;
+    }
+
+    /* Multimonth: compact header and title */
+    .fc-multimonth {
+        grid-template-columns: 1fr !important;
+        gap: 0.75rem !important;
+    }
+
+    .fc-multimonth-month {
+        padding: 0.5rem 0.5rem !important;
+    }
+
+    .fc-multimonth .fc-multimonth-header {
+        margin-bottom: 0.3rem !important;
+        padding: 0 !important;
+    }
+
+    .fc-multimonth .fc-multimonth-title {
+        font-size: 0.875rem !important;
+        margin-bottom: 0.25rem !important;
+        padding: 0 !important;
+        line-height: 1.2 !important;
+    }
+
+    .fc-multimonth .fc-multimonth-header-table .fc-scrollgrid-sync-inner {
+        padding: 0.15rem 0 !important;
+    }
+
+    .fc-multimonth .fc-col-header-cell {
+        padding: 0.2rem 0.1rem !important;
+        font-size: 0.65rem !important;
+    }
+
+    /* Keep day grid clear of header - prevent overlap */
+    .fc-multimonth .fc-multimonth-daygrid {
+        margin-top: 0.3rem !important;
+    }
+
+    .fc-multimonth .fc-multimonth-daygrid-table {
+        margin-top: 0.3rem !important;
+    }
+
+    .fc-multimonth .fc-daygrid-day {
+        padding: 0.2rem 0.1rem !important;
+        min-height: 2rem !important;
+    }
+
+    .fc-multimonth .fc-daygrid-day-frame {
+        min-height: 2rem !important;
+    }
+
+    .fc-multimonth .fc-daygrid-day-number {
+        font-size: 0.65rem !important;
+        margin-bottom: 1px !important;
+    }
+
+    .fc-multimonth .fc-daygrid-day-events {
+        margin-top: 0.5rem !important;
+    }
+
+    .fc-multimonth .fc-event {
+        height: 2px !important;
+    }
+}

@@ -352,6 +352,113 @@ p {
     }
 }
 
+/* ===== Nav 아래 Mega Menu ===== */
+
+.projects-mega-panel {
+    position: fixed; /* 떠있게 */
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    animation: slideDown 0.25s ease forwards;
+}
+
+.projects-mega-panel .projects-mega-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 24px 36px 24px;
+}
+
+.projects-mega-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 14px;
+}
+
+.projects-mega-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.projects-mega-title {
+  font-weight: 700;
+  font-size: 18px;
+  color: #111827;
+}
+
+.projects-mega-sep {
+  color: #9ca3af;
+}
+
+.projects-mega-overview {
+  font-size: 13px;
+  color: #6b7280;
+  text-decoration: none;
+}
+.projects-mega-overview:hover {
+  text-decoration: underline;
+  color: #111827;
+}
+
+.projects-mega-close {
+  font-size: 26px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.projects-mega-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 26px 40px;
+  margin-top: 24px;
+}
+
+.projects-mega-item {
+  display: block;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.projects-mega-item:hover {
+  color: #1d4ed8;
+  border-bottom-color: #c7d2fe;
+}
+
+/* 슬라이드 애니메이션 */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .projects-mega-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .projects-mega-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* =========================================================
    4) Buttons (공통)
 ========================================================= */

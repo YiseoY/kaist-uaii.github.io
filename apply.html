@@ -70,6 +70,113 @@
     background-color: #94a3b8 !important; /* slate-400 */
     cursor: not-allowed;
   }
+
+        .projects-mega-panel {
+            position: fixed; /* 떠있게 */
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            animation: slideDown 0.25s ease forwards;
+        }
+
+            .projects-mega-panel .projects-mega-inner {
+                max-width: 1100px;
+                margin: 0 auto;
+                padding: 28px 24px 36px 24px;
+            }
+
+        .projects-mega-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 14px;
+        }
+
+        .projects-mega-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .projects-mega-title {
+            font-weight: 700;
+            font-size: 18px;
+            color: #111827;
+        }
+
+        .projects-mega-sep {
+            color: #9ca3af;
+        }
+
+        .projects-mega-overview {
+            font-size: 13px;
+            color: #6b7280;
+            text-decoration: none;
+        }
+
+            .projects-mega-overview:hover {
+                text-decoration: underline;
+                color: #111827;
+            }
+
+        .projects-mega-close {
+            font-size: 26px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .projects-mega-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 26px 40px;
+            margin-top: 24px;
+        }
+
+        .projects-mega-item {
+            display: block;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+            .projects-mega-item:hover {
+                color: #1d4ed8;
+                border-bottom-color: #c7d2fe;
+            }
+
+        /* 슬라이드 애니메이션 */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .projects-mega-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 520px) {
+            .projects-mega-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -85,7 +192,12 @@
             <div class="hidden md:flex gap-6 text-xs font-bold uppercase tracking-widest text-slate-500">
                 <a href="index.html" class="hover:text-blue-600">Home</a>
                 <a href="people.html" class="hover:text-blue-600">People</a>
-                <a href="projects.html" class="hover:text-blue-600">Projects</a>
+                <button id="projectsMegaBtn"
+                        type="button"
+                        class="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-blue-600"
+                        aria-expanded="false">
+                    Projects
+                </button>
                 <a href="press.html" class="hover:text-blue-600">Events</a>
                 <a href="apply.html" class="text-blue-600">Apply</a>
             </div>
@@ -110,6 +222,55 @@
             </div>
         </div>
     </nav>
+
+    <div id="projectsMegaPanel" class="projects-mega-panel hidden">
+        <div class="projects-mega-inner">
+
+            <div class="projects-mega-header">
+                <div class="projects-mega-breadcrumb">
+                    <span class="projects-mega-title">Projects</span>
+                    <span class="projects-mega-sep">›</span>
+                    <a href="projects.html" class="projects-mega-overview">
+                        See overview
+                    </a>
+                </div>
+
+                <button id="projectsMegaClose"
+                        class="projects-mega-close"
+                        type="button">
+                    ×
+                </button>
+            </div>
+
+            <div class="projects-mega-grid">
+                <a class="projects-mega-item"
+                   href="https://sites.google.com/view/fuscc/home"
+                   target="_blank" rel="noopener">
+                    Urban@KAIST
+                </a>
+
+                <a class="projects-mega-item"
+                   href="https://hcfm.kaist.ac.kr"
+                   target="_blank" rel="noopener">
+                    HcFM
+                </a>
+
+                <a class="projects-mega-item"
+                   href="https://caus.kaist.ac.kr"
+                   target="_blank" rel="noopener">
+                    CAUS
+                </a>
+
+                <a class="projects-mega-item"
+                   href="https://c3.kaist.ac.kr"
+                   target="_blank" rel="noopener">
+                    KAIST-NYU C3
+                </a>
+            </div>
+
+        </div>
+    </div>
+
     <section class="py-20 bg-gray-50">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl font-bold text-center mb-4">
@@ -217,33 +378,33 @@
                     </div>
                 </div>
                 <!--<div class="rounded-[2rem] shadow-sm bg-white card-hover border border-slate-100">
-            <div class="p-8">
-                <h3 class="text-xl font-semibold mb-2">
-                    Research Professors / Postdoctoral Fellows
-                </h3>
-                <p class="text-gray-600 mb-4 text-sm">
-                    For Ph.D. holders with strong publication or project experience.
-                </p>
-                <ul class="text-sm text-gray-500 mb-4 space-y-1">
-                    <li>
-                        <strong>Application:</strong> Rolling basis
-                    </li>
-                    <li>
-                        <strong>Focus:</strong> Urban AI & Urban Representation
-                    </li>
-                </ul>
-                <a href="/apply/post" class="inline-flex my-6 px-3 py-2 bg-slate-700 text-white rounded-md text-sm font-semibold hover:bg-gray-600 btn-hover">
-                    <div class="flex flex-row justify-center items-center">
-                        <div class="mx-1">See in Detail</div>
-                        <div>
-                            <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-semibold mb-2">
+                            Research Professors / Postdoctoral Fellows
+                        </h3>
+                        <p class="text-gray-600 mb-4 text-sm">
+                            For Ph.D. holders with strong publication or project experience.
+                        </p>
+                        <ul class="text-sm text-gray-500 mb-4 space-y-1">
+                            <li>
+                                <strong>Application:</strong> Rolling basis
+                            </li>
+                            <li>
+                                <strong>Focus:</strong> Urban AI & Urban Representation
+                            </li>
+                        </ul>
+                        <a href="/apply/post" class="inline-flex my-6 px-3 py-2 bg-slate-700 text-white rounded-md text-sm font-semibold hover:bg-gray-600 btn-hover">
+                            <div class="flex flex-row justify-center items-center">
+                                <div class="mx-1">See in Detail</div>
+                                <div>
+                                    <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </a>
-            </div>
-        </div>-->
+                </div>-->
             </div>
 
             <!-- Application Instructions -->
@@ -282,13 +443,13 @@
             </div>
             <!-- FAQ -->
             <!--<a href="/apply">
-        <div class="mt-5 bg-white rounded-2xl shadow-sm p-8 max-w-4xl mx-auto flex justify-between items-center hover:bg-gray-50 cursor-pointer transition-colors border border-gray-100">
-            <h4 class="text-2xl font-semibold">FAQ</h4>
-            <svg class="arrow-icon" style="width: 24px; height: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-        </div>
-    </a>-->
+                <div class="mt-5 bg-white rounded-2xl shadow-sm p-8 max-w-4xl mx-auto flex justify-between items-center hover:bg-gray-50 cursor-pointer transition-colors border border-gray-100">
+                    <h4 class="text-2xl font-semibold">FAQ</h4>
+                    <svg class="arrow-icon" style="width: 24px; height: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+            </a>-->
         </div>
     </section>
 

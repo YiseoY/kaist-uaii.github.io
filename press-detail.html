@@ -53,6 +53,115 @@
         #expandable-inner {
             overflow: hidden;
         }
+
+        /* ===== Nav 아래 Mega Menu ===== */
+
+        .projects-mega-panel {
+            position: fixed; /* 떠있게 */
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            animation: slideDown 0.25s ease forwards;
+        }
+
+            .projects-mega-panel .projects-mega-inner {
+                max-width: 1100px;
+                margin: 0 auto;
+                padding: 28px 24px 36px 24px;
+            }
+
+        .projects-mega-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 14px;
+        }
+
+        .projects-mega-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .projects-mega-title {
+            font-weight: 700;
+            font-size: 18px;
+            color: #111827;
+        }
+
+        .projects-mega-sep {
+            color: #9ca3af;
+        }
+
+        .projects-mega-overview {
+            font-size: 13px;
+            color: #6b7280;
+            text-decoration: none;
+        }
+
+            .projects-mega-overview:hover {
+                text-decoration: underline;
+                color: #111827;
+            }
+
+        .projects-mega-close {
+            font-size: 26px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .projects-mega-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 26px 40px;
+            margin-top: 24px;
+        }
+
+        .projects-mega-item {
+            display: block;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+            .projects-mega-item:hover {
+                color: #1d4ed8;
+                border-bottom-color: #c7d2fe;
+            }
+
+        /* 슬라이드 애니메이션 */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .projects-mega-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 520px) {
+            .projects-mega-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body class="text-slate-900">
@@ -70,7 +179,12 @@
             <div class="hidden md:flex gap-6 text-xs font-bold uppercase tracking-widest text-slate-500">
                 <a href="index.html" class="hover:text-blue-600">Home</a>
                 <a href="people.html" class="hover:text-blue-600">People</a>
-                <a href="projects.html" class="hover:text-blue-600">Projects</a>
+                <button id="projectsMegaBtn"
+                        type="button"
+                        class="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-blue-600"
+                        aria-expanded="false">
+                    Projects
+                </button>
                 <a href="press.html" class="text-blue-600">Events</a>
                 <a href="apply.html" class="hover:text-blue-600">Apply</a>
             </div>
@@ -96,6 +210,54 @@
             </div>
         </div>
     </nav>
+
+    <div id="projectsMegaPanel" class="projects-mega-panel hidden">
+        <div class="projects-mega-inner">
+
+            <div class="projects-mega-header">
+                <div class="projects-mega-breadcrumb">
+                    <span class="projects-mega-title">Projects</span>
+                    <span class="projects-mega-sep">›</span>
+                    <a href="projects.html" class="projects-mega-overview">
+                        See overview
+                    </a>
+                </div>
+
+                <button id="projectsMegaClose"
+                        class="projects-mega-close"
+                        type="button">
+                    ×
+                </button>
+            </div>
+
+            <div class="projects-mega-grid">
+                <a class="projects-mega-item"
+                   href="https://sites.google.com/view/fuscc/home"
+                   target="_blank" rel="noopener">
+                    Urban@KAIST
+                </a>
+
+                <a class="projects-mega-item"
+                   href="https://hcfm.kaist.ac.kr"
+                   target="_blank" rel="noopener">
+                    HcFM
+                </a>
+
+                <a class="projects-mega-item"
+                   href="https://caus.kaist.ac.kr"
+                   target="_blank" rel="noopener">
+                    CAUS
+                </a>
+
+                <a class="projects-mega-item"
+                   href="https://c3.kaist.ac.kr"
+                   target="_blank" rel="noopener">
+                    KAIST-NYU C3
+                </a>
+            </div>
+
+        </div>
+    </div>
 
     <main class="container mx-auto px-6 max-w-6xl py-12">
         <!-- Newspaper Header Style -->
@@ -259,11 +421,11 @@
                 const div = document.createElement('div');
                 div.className = "group cursor-pointer";
                 div.innerHTML = `
-              <a href="${link.href}" target="_blank" rel="noopener">
-                <p class="text-[10px] font-bold text-blue-600 uppercase tracking-widest mb-1">${link.source}</p>
-                <h4 class="text-sm font-semibold text-slate-800 group-hover:text-blue-900 group-hover:underline leading-tight">${link.title}</h4>
-              </a>
-            `;
+                  <a href="${link.href}" target="_blank" rel="noopener">
+                    <p class="text-[10px] font-bold text-blue-600 uppercase tracking-widest mb-1">${link.source}</p>
+                    <h4 class="text-sm font-semibold text-slate-800 group-hover:text-blue-900 group-hover:underline leading-tight">${link.title}</h4>
+                  </a>
+                `;
                 if (index < INITIAL_COUNT) visibleContainer.appendChild(div);
                 else expandableInner.appendChild(div);
             });
@@ -324,15 +486,15 @@
                     : '';
 
                 btn.innerHTML = `
-                          <div class="mb-1">
-                            <strong>(${article.date}) ${article.title}</strong>
-                          </div>
-                          <div class="pt-2 text-slate-500">
-                            ${article.link_en ? `<a href="${article.link_en}" target="_blank" rel="noopener" class="text-sm text-blue-800/70 hover:underline hover:text-blue-600">KAIST NEWS (EN)</a>` : ''}
-                            ${article.link_kr ? `<a href="${article.link_kr}" target="_blank" rel="noopener" class="text-sm text-blue-800/70 hover:underline hover:text-blue-600">${article.link_en ? ' / (KR), ' : '(KR), '}</a>` : ''}
-                            ${otherLinksHtml ? otherLinksHtml : ''}
-                          </div>
-                        `;
+                              <div class="mb-1">
+                                <strong>(${article.date}) ${article.title}</strong>
+                              </div>
+                              <div class="pt-2 text-slate-500">
+                                ${article.link_en ? `<a href="${article.link_en}" target="_blank" rel="noopener" class="text-sm text-blue-800/70 hover:underline hover:text-blue-600">KAIST NEWS (EN)</a>` : ''}
+                                ${article.link_kr ? `<a href="${article.link_kr}" target="_blank" rel="noopener" class="text-sm text-blue-800/70 hover:underline hover:text-blue-600">${article.link_en ? ' / (KR), ' : '(KR), '}</a>` : ''}
+                                ${otherLinksHtml ? otherLinksHtml : ''}
+                              </div>
+                            `;
 
                 // Archive 클릭 → 메인 기사 교체
                 btn.addEventListener('click', () => renderMain(article));
@@ -370,6 +532,43 @@
                 });
             }
         });
+
+        (function () {
+            const btn = document.getElementById("projectsMegaBtn");
+            const panel = document.getElementById("projectsMegaPanel");
+            const closeBtn = document.getElementById("projectsMegaClose");
+
+            if (!btn || !panel) return;
+
+            function openMenu() {
+                panel.classList.remove("hidden");
+                btn.setAttribute("aria-expanded", "true");
+            }
+
+            function closeMenu() {
+                panel.classList.add("hidden");
+                btn.setAttribute("aria-expanded", "false");
+            }
+
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                panel.classList.contains("hidden") ? openMenu() : closeMenu();
+            });
+
+            closeBtn?.addEventListener("click", closeMenu);
+
+            // 바깥 클릭 시 닫기
+            document.addEventListener("click", (e) => {
+                if (!panel.contains(e.target) && !btn.contains(e.target)) {
+                    closeMenu();
+                }
+            });
+
+            // ESC로 닫기
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeMenu();
+            });
+        })();
     </script>
 </body>
 </html>

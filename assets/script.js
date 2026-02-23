@@ -519,7 +519,7 @@ function renderIndexResearchRecent(researchList, limit = 3) {
         // ✅ projects.html의 research update로 이동 (id 전달)
         row.addEventListener("click", () => {
             const id = encodeURIComponent(item.id);
-            window.location.href = `projects.html?view=research&research=${encodeURIComponent(item.id)}#research-update`;
+            window.location.href = `press.html?view=research&research=${encodeURIComponent(item.id)}#research-update`;
         });
 
         el.appendChild(row);
@@ -668,3 +668,40 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     initUpdates();
 });
+
+(function () {
+  const btn = document.getElementById("projectsMegaBtn");
+  const panel = document.getElementById("projectsMegaPanel");
+  const closeBtn = document.getElementById("projectsMegaClose");
+
+  if (!btn || !panel) return;
+
+  function openMenu() {
+    panel.classList.remove("hidden");
+    btn.setAttribute("aria-expanded", "true");
+  }
+
+  function closeMenu() {
+    panel.classList.add("hidden");
+    btn.setAttribute("aria-expanded", "false");
+  }
+
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    panel.classList.contains("hidden") ? openMenu() : closeMenu();
+  });
+
+  closeBtn?.addEventListener("click", closeMenu);
+
+  // 바깥 클릭 시 닫기
+  document.addEventListener("click", (e) => {
+    if (!panel.contains(e.target) && !btn.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  // ESC로 닫기
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMenu();
+  });
+})();

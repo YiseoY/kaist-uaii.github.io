@@ -49,6 +49,113 @@
         .research-update {
             scroll-margin-top: 100px;
         }
+
+        .projects-mega-panel {
+            position: fixed; /* 떠있게 */
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            animation: slideDown 0.25s ease forwards;
+        }
+
+            .projects-mega-panel .projects-mega-inner {
+                max-width: 1100px;
+                margin: 0 auto;
+                padding: 28px 24px 36px 24px;
+            }
+
+        .projects-mega-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 14px;
+        }
+
+        .projects-mega-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .projects-mega-title {
+            font-weight: 700;
+            font-size: 18px;
+            color: #111827;
+        }
+
+        .projects-mega-sep {
+            color: #9ca3af;
+        }
+
+        .projects-mega-overview {
+            font-size: 13px;
+            color: #6b7280;
+            text-decoration: none;
+        }
+
+            .projects-mega-overview:hover {
+                text-decoration: underline;
+                color: #111827;
+            }
+
+        .projects-mega-close {
+            font-size: 26px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .projects-mega-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 26px 40px;
+            margin-top: 24px;
+        }
+
+        .projects-mega-item {
+            display: block;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+            .projects-mega-item:hover {
+                color: #1d4ed8;
+                border-bottom-color: #c7d2fe;
+            }
+
+        /* 슬라이드 애니메이션 */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .projects-mega-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 520px) {
+            .projects-mega-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 
@@ -67,7 +174,12 @@
             <div class="hidden md:flex gap-6 text-xs font-bold uppercase tracking-widest text-slate-500">
                 <a href="index.html" class="hover:text-blue-600">Home</a>
                 <a href="people.html" class="hover:text-blue-600">People</a>
-                <a href="projects.html" class="text-blue-600">Projects</a>
+                <button id="projectsMegaBtn"
+                        type="button"
+                        class="text-xs font-bold uppercase tracking-widest text-slate-500 text-blue-600"
+                        aria-expanded="false">
+                    Projects
+                </button>
                 <a href="press.html" class="hover:text-blue-600">Events</a>
                 <a href="apply.html" class="hover:text-blue-600">Apply</a>
             </div>
@@ -93,6 +205,54 @@
         </div>
     </nav>
 
+    <div id="projectsMegaPanel" class="projects-mega-panel hidden">
+        <div class="projects-mega-inner">
+
+            <div class="projects-mega-header">
+                <div class="projects-mega-breadcrumb">
+                    <span class="projects-mega-title">Projects</span>
+                    <span class="projects-mega-sep">›</span>
+                    <a href="projects.html" class="projects-mega-overview">
+                        See overview
+                    </a>
+                </div>
+
+                <button id="projectsMegaClose"
+                        class="projects-mega-close"
+                        type="button">
+                    ×
+                </button>
+            </div>
+
+            <div class="projects-mega-grid">
+                <a class="projects-mega-item"
+                   href="https://sites.google.com/view/fuscc/home"
+                   target="_blank" rel="noopener">
+                    Urban@KAIST
+                </a>
+
+                <a class="projects-mega-item"
+                   href="https://hcfm.kaist.ac.kr"
+                   target="_blank" rel="noopener">
+                    HcFM
+                </a>
+
+                <a class="projects-mega-item"
+                   href="https://caus.kaist.ac.kr"
+                   target="_blank" rel="noopener">
+                    CAUS
+                </a>
+
+                <a class="projects-mega-item"
+                   href="https://c3.kaist.ac.kr"
+                   target="_blank" rel="noopener">
+                    KAIST-NYU C3
+                </a>
+            </div>
+
+        </div>
+    </div>
+
     <main class="container mx-auto px-6 max-w-7xl">
         <!-- Hero Section -->
         <section class="pt-24 pb-20">
@@ -110,20 +270,7 @@
             </div>
         </section>
 
-        <!-- Research Update -->
-        <section id="research-update" class="py-16">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="flex items-center justify-between mb-6">
-                    <h2 class="text-3xl font-extrabold">Research Update</h2>
-                </div>
 
-                <!-- ✅ 리스트가 들어갈 곳 -->
-                <div id="research-update-list" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
-
-                <!-- ✅ 상세가 들어갈 곳 (옵션) -->
-                <div id="research-update-detail" class="mt-10 hidden"></div>
-            </div>
-        </section>
     </main>
 
     <footer class="bg-white border-t border-gray-200 py-8 text-center mt-20">
@@ -150,25 +297,25 @@
 
             card.className = "card-hover bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100";
             card.innerHTML = `
-                        <a href="${linkHref}" ${target} class="block h-full">
-                            ${p.image ? `
-                            <div class="relative overflow-hidden bg-slate-100 aspect-video">
-                                <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            </div>
-                            ` : ''}
-                            <div class="p-6">
-                                <h3 class="serif-title text-2xl font-bold text-slate-900 mb-3">${p.title}</h3>
-                                ${p.desc ? `<p class="text-sm text-slate-600 leading-relaxed mb-4">${p.desc}</p>` : ''}
-                                <div class="flex items-center gap-2 text-sm font-medium text-blue-600 group-hover:text-blue-700">
-                                    <span>Learn more</span>
-                                    <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
+                            <a href="${linkHref}" ${target} class="block h-full">
+                                ${p.image ? `
+                                <div class="relative overflow-hidden bg-slate-100 aspect-video">
+                                    <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                                 </div>
-                            </div>
-                        </a>
-                    `;
+                                ` : ''}
+                                <div class="p-6">
+                                    <h3 class="serif-title text-2xl font-bold text-slate-900 mb-3">${p.title}</h3>
+                                    ${p.desc ? `<p class="text-sm text-slate-600 leading-relaxed mb-4">${p.desc}</p>` : ''}
+                                    <div class="flex items-center gap-2 text-sm font-medium text-blue-600 group-hover:text-blue-700">
+                                        <span>Learn more</span>
+                                        <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </a>
+                        `;
             return card;
         }
 
@@ -182,35 +329,35 @@
 
             if (hasLink) {
                 card.innerHTML = `
-                            <a href="${linkHref}" ${target} class="block h-full">
-                                <div class="flex items-start justify-between gap-4">
-                                    <div class="flex-1">
-                                        <h3 class="serif-title text-xl font-bold text-slate-900 mb-2">${p.title}</h3>
-                                        ${p.desc ? `<p class="text-sm text-slate-600 leading-relaxed mb-4">${p.desc}</p>` : ''}
-                                        <div class="flex items-center gap-2 text-sm font-medium text-blue-600">
-                                            <span>View project</span>
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                            </svg>
+                                <a href="${linkHref}" ${target} class="block h-full">
+                                    <div class="flex items-start justify-between gap-4">
+                                        <div class="flex-1">
+                                            <h3 class="serif-title text-xl font-bold text-slate-900 mb-2">${p.title}</h3>
+                                            ${p.desc ? `<p class="text-sm text-slate-600 leading-relaxed mb-4">${p.desc}</p>` : ''}
+                                            <div class="flex items-center gap-2 text-sm font-medium text-blue-600">
+                                                <span>View project</span>
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </div>
                                         </div>
+                                        ${p.researchSectionID ? `
+                                        <span class="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200 shrink-0">
+                                            ${p.researchSectionID}
+                                        </span>
+                                        ` : ''}
                                     </div>
-                                    ${p.researchSectionID ? `
-                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200 shrink-0">
-                                        ${p.researchSectionID}
-                                    </span>
-                                    ` : ''}
-                                </div>
-                            </a>
-                        `;
+                                </a>
+                            `;
             } else {
                 card.innerHTML = `
-                            <div class="flex items-start justify-between gap-4">
-                                <div class="flex-1">
-                                    <h3 class="serif-title text-xl font-bold text-slate-400 mb-2">${p.title}</h3>
-                                    ${p.desc ? `<p class="text-sm text-slate-500 leading-relaxed">${p.desc}</p>` : ''}
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex-1">
+                                        <h3 class="serif-title text-xl font-bold text-slate-400 mb-2">${p.title}</h3>
+                                        ${p.desc ? `<p class="text-sm text-slate-500 leading-relaxed">${p.desc}</p>` : ''}
+                                    </div>
                                 </div>
-                            </div>
-                        `;
+                            `;
             }
             return card;
         }
@@ -241,8 +388,8 @@
 
 
         /* =========================
-   Research Update (SAFE)
-   ========================= */
+Research Update (SAFE)
+========================= */
 
         (async function RU_init() {
             try {
@@ -316,24 +463,24 @@
                     "group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:shadow-md cursor-pointer";
 
                 card.innerHTML = `
-      <div class="flex gap-4">
-        <div class="flex-1 min-w-0">
-          <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-700">
-            ${title}
-          </h3>
-          <p class="mt-2 text-sm text-slate-600 line-clamp-2">
-            ${desc}
-          </p>
-          <div class="mt-3 text-sm font-semibold text-blue-700">
-            View details →
+          <div class="flex gap-4">
+            <div class="flex-1 min-w-0">
+              <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-700">
+                ${title}
+              </h3>
+              <p class="mt-2 text-sm text-slate-600 line-clamp-2">
+                ${desc}
+              </p>
+              <div class="mt-3 text-sm font-semibold text-blue-700">
+                View details →
+              </div>
+            </div>
+            ${thumb ? `
+              <div class="hidden md:block w-[120px] h-[80px] rounded-xl overflow-hidden border shrink-0">
+                <img src="${thumb}" class="w-full h-full object-cover" />
+              </div>` : ""}
           </div>
-        </div>
-        ${thumb ? `
-          <div class="hidden md:block w-[120px] h-[80px] rounded-xl overflow-hidden border shrink-0">
-            <img src="${thumb}" class="w-full h-full object-cover" />
-          </div>` : ""}
-      </div>
-    `;
+        `;
 
                 card.addEventListener("click", () => {
                     // ✅ 클릭 시 URL도 맞춰줌(새로고침해도 유지)
@@ -365,53 +512,53 @@
 
             el.classList.remove("hidden");
             el.innerHTML = `
-    <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-      <div class="flex justify-between items-start gap-4">
-        <div class="min-w-0">
-          <h3 class="text-2xl font-extrabold break-words">
-            ${item.title || ""}
-          </h3>
-          ${item.desc ? `<p class="mt-2 text-slate-600">${item.desc}</p>` : ""}
-        </div>
-        <button id="ru-close"
-          class="px-3 py-2 text-sm border rounded-lg hover:bg-slate-50 shrink-0">
-          Close
-        </button>
-      </div>
-
-      ${researchList.length ? `
-        <div class="mt-8 space-y-12">
-          ${researchList.map(r => `
-            <section>
-              <h4 class="text-xl font-bold">${r.title || ""}</h4>
-              ${r.date ? `<p class="mt-1 text-sm text-slate-500">${r.date}</p>` : ""}
-
-              ${r.desc ? `
-                <div class="mt-4 text-slate-700 whitespace-pre-line">
-                  ${r.desc}
-                </div>` : ""}
-
-              ${Array.isArray(r.images) && r.images.length > 0 ? `
-      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        ${r.images.map(src => `
-          <div class="rounded-xl overflow-hidden border bg-slate-100">
-            <img src="${RU_assetUrl(src)}"
-                 alt="Research image"
-                 class="w-full h-full object-cover"
-                 loading="lazy"
-                 onerror="console.error('[RU IMG 404]', this.src);" />
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="flex justify-between items-start gap-4">
+            <div class="min-w-0">
+              <h3 class="text-2xl font-extrabold break-words">
+                ${item.title || ""}
+              </h3>
+              ${item.desc ? `<p class="mt-2 text-slate-600">${item.desc}</p>` : ""}
+            </div>
+            <button id="ru-close"
+              class="px-3 py-2 text-sm border rounded-lg hover:bg-slate-50 shrink-0">
+              Close
+            </button>
           </div>
-        `).join("")}
-      </div>
-    ` : ""}
+
+          ${researchList.length ? `
+            <div class="mt-8 space-y-12">
+              ${researchList.map(r => `
+                <section>
+                  <h4 class="text-xl font-bold">${r.title || ""}</h4>
+                  ${r.date ? `<p class="mt-1 text-sm text-slate-500">${r.date}</p>` : ""}
+
+                  ${r.desc ? `
+                    <div class="mt-4 text-slate-700 whitespace-pre-line">
+                      ${r.desc}
+                    </div>` : ""}
+
+                  ${Array.isArray(r.images) && r.images.length > 0 ? `
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            ${r.images.map(src => `
+              <div class="rounded-xl overflow-hidden border bg-slate-100">
+                <img src="${RU_assetUrl(src)}"
+                     alt="Research image"
+                     class="w-full h-full object-cover"
+                     loading="lazy"
+                     onerror="console.error('[RU IMG 404]', this.src);" />
+              </div>
+            `).join("")}
+          </div>
+        ` : ""}
 
 
-            </section>
-          `).join("")}
+                </section>
+              `).join("")}
+            </div>
+          ` : ""}
         </div>
-      ` : ""}
-    </div>
-  `;
+      `;
 
             document.getElementById("ru-close").onclick = () => {
                 el.classList.add("hidden");

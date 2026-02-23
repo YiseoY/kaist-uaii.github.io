@@ -1,0 +1,7 @@
+.research-update {
+    scroll-margin-top: 100px;
+}
+
+img {
+    transition: transform 0.3s ease;
+}

@@ -25,7 +25,7 @@
 </head>
 
 <body>
-    <nav class="border-b border-slate-100 bg-white/80 backdrop-blur-md sticky top-0 z-50">
+    <nav id="siteNav" class="border-b border-slate-100 bg-white/80 backdrop-blur-md sticky top-0 z-50">
         <div class="container mx-auto px-6 py-6 flex justify-between items-center">
 
             <!-- Logo -->
@@ -37,7 +37,12 @@
             <div class="hidden md:flex gap-6 text-xs font-bold uppercase tracking-widest text-slate-500">
                 <a href="index.html" class="text-blue-600">Home</a>
                 <a href="people.html" class="hover:text-blue-600">People</a>
-                <a href="projects.html" class="hover:text-blue-600">Projects</a>
+                <button id="projectsMegaBtn"
+                        type="button"
+                        class="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-blue-600"
+                        aria-expanded="false">
+                    Projects
+                </button>
                 <a href="press.html" class="hover:text-blue-600">Events</a>
                 <a href="apply.html" class="hover:text-blue-600">Apply</a>
             </div>
@@ -62,6 +67,56 @@
             </div>
         </div>
     </nav>
+
+    <!-- ===== Projects Mega Menu (nav 아래 펼쳐짐) ===== -->
+    <div id="projectsMegaPanel" class="projects-mega-panel hidden">
+        <div class="projects-mega-inner">
+
+            <div class="projects-mega-header">
+                <div class="projects-mega-breadcrumb">
+                    <span class="projects-mega-title">Projects</span>
+                    <span class="projects-mega-sep">›</span>
+                    <a href="projects.html" class="projects-mega-overview">
+                        See overview
+                    </a>
+                </div>
+
+                <button id="projectsMegaClose"
+                        class="projects-mega-close"
+                        type="button">
+                    ×
+                </button>
+            </div>
+
+            <div class="projects-mega-grid">
+                <a class="projects-mega-item"
+                   href="https://sites.google.com/view/fuscc/home"
+                   target="_blank" rel="noopener">
+                    Urban@KAIST
+                </a>
+
+                <a class="projects-mega-item"
+                   href="https://hcfm.kaist.ac.kr"
+                   target="_blank" rel="noopener">
+                    HcFM
+                </a>
+
+                <a class="projects-mega-item"
+                   href="https://caus.kaist.ac.kr"
+                   target="_blank" rel="noopener">
+                    CAUS
+                </a>
+
+                <a class="projects-mega-item"
+                   href="https://c3.kaist.ac.kr"
+                   target="_blank" rel="noopener">
+                    KAIST-NYU C3
+                </a>
+            </div>
+
+        </div>
+    </div>
+
 
     <section id="about" class="hero" role="banner" aria-label="Urban AI Institute">
         <div class="hero-overlay">
@@ -125,7 +180,7 @@
                     <!-- Left: Recent Research -->
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-lg font-bold text-slate-900">Research</h3>
-                        <a href="projects.html?view=research#research-update" class="text-sm text-blue-600 hover:text-blue-800 font-medium">See all</a>
+                        <a href="press.html?view=research#research-update" class="text-sm text-blue-600 hover:text-blue-800 font-medium">See all</a>
                     </div>
                     <div id="recent-research-list" class="space-y-3">
                         <!-- Recent events will be injected here -->

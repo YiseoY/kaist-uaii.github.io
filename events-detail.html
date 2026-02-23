@@ -43,6 +43,115 @@
             border-top: 4px solid #000;
             border-bottom: 1px solid #000;
         }
+
+        /* ===== Nav 아래 Mega Menu ===== */
+
+        .projects-mega-panel {
+            position: fixed; /* 떠있게 */
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            animation: slideDown 0.25s ease forwards;
+        }
+
+            .projects-mega-panel .projects-mega-inner {
+                max-width: 1100px;
+                margin: 0 auto;
+                padding: 28px 24px 36px 24px;
+            }
+
+        .projects-mega-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 14px;
+        }
+
+        .projects-mega-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .projects-mega-title {
+            font-weight: 700;
+            font-size: 18px;
+            color: #111827;
+        }
+
+        .projects-mega-sep {
+            color: #9ca3af;
+        }
+
+        .projects-mega-overview {
+            font-size: 13px;
+            color: #6b7280;
+            text-decoration: none;
+        }
+
+            .projects-mega-overview:hover {
+                text-decoration: underline;
+                color: #111827;
+            }
+
+        .projects-mega-close {
+            font-size: 26px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .projects-mega-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 26px 40px;
+            margin-top: 24px;
+        }
+
+        .projects-mega-item {
+            display: block;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+            .projects-mega-item:hover {
+                color: #1d4ed8;
+                border-bottom-color: #c7d2fe;
+            }
+
+        /* 슬라이드 애니메이션 */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .projects-mega-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 520px) {
+            .projects-mega-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body class="text-slate-900">
@@ -60,7 +169,12 @@
             <div class="hidden md:flex gap-6 text-xs font-bold uppercase tracking-widest text-slate-500">
                 <a href="index.html" class="hover:text-blue-600">Home</a>
                 <a href="people.html" class="hover:text-blue-600">People</a>
-                <a href="projects.html" class="hover:text-blue-600">Projects</a>
+                <button id="projectsMegaBtn"
+                        type="button"
+                        class="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-blue-600"
+                        aria-expanded="false">
+                    Projects
+                </button>
                 <a href="press.html" class="text-blue-600">Events</a>
                 <a href="apply.html" class="hover:text-blue-600">Apply</a>
             </div>
@@ -87,6 +201,54 @@
         </div>
     </nav>
 
+    <div id="projectsMegaPanel" class="projects-mega-panel hidden">
+        <div class="projects-mega-inner">
+
+            <div class="projects-mega-header">
+                <div class="projects-mega-breadcrumb">
+                    <span class="projects-mega-title">Projects</span>
+                    <span class="projects-mega-sep">›</span>
+                    <a href="projects.html" class="projects-mega-overview">
+                        See overview
+                    </a>
+                </div>
+
+                <button id="projectsMegaClose"
+                        class="projects-mega-close"
+                        type="button">
+                    ×
+                </button>
+            </div>
+
+            <div class="projects-mega-grid">
+                <a class="projects-mega-item"
+                   href="https://sites.google.com/view/fuscc/home"
+                   target="_blank" rel="noopener">
+                    Urban@KAIST
+                </a>
+
+                <a class="projects-mega-item"
+                   href="https://hcfm.kaist.ac.kr"
+                   target="_blank" rel="noopener">
+                    HcFM
+                </a>
+
+                <a class="projects-mega-item"
+                   href="https://caus.kaist.ac.kr"
+                   target="_blank" rel="noopener">
+                    CAUS
+                </a>
+
+                <a class="projects-mega-item"
+                   href="https://c3.kaist.ac.kr"
+                   target="_blank" rel="noopener">
+                    KAIST-NYU C3
+                </a>
+            </div>
+
+        </div>
+    </div>
+
     <main class="container mx-auto px-6 max-w-6xl py-12">
         <!-- Newspaper Header Style -->
         <header class="text-center mb-16">
@@ -108,7 +270,7 @@
                     <div id="main-content-wrapper" class="flex flex-col md:flex-row gap-8 mb-8">
                         <!-- Image Container -->
                         <div id="main-image-container" class="flex-shrink-0 rounded-sm shadow-2xl overflow-hidden bg-slate-50" style="display: none;">
-                            <img id="main-image" src="" alt="Events Image" class="w-full h-full object-cover">
+                            <img id="main-image" src="" onerror="this.src='assets/images/placeholder.jpg'" alt="Events Image" class="w-full h-full object-cover">
                         </div>
 
                         <!-- Content Section -->
@@ -166,12 +328,12 @@
                                             <div class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">Award</div>
                                             <div class="text-slate-700 font-semibold text-blue-600" id="article-award"></div>
                                         </div>
-                                    </div>  
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div id="article-desc" class="markdown text-lg text-slate-700 first-letter:text-7xl first-letter:font-bold first-letter:mr-3 first-letter:float-left first-letter:text-blue-900 m-8">
+                    <div id="article-desc" class="markdown text-base sm:text-lg text-slate-700 first-letter:text-7xl first-letter:font-bold first-letter:mr-3 first-letter:float-left first-letter:text-blue-900 sm:m-8">
                     </div>
 
                     <!-- Photo Gallery -->
@@ -267,13 +429,13 @@
                 }
                 switch (day % 10) {
                     case 1:
-                    return 'st';
+                        return 'st';
                     case 2:
-                    return 'nd';
-                    case 3: 
-                    return 'rd';
+                        return 'nd';
+                    case 3:
+                        return 'rd';
                     default:
-                    return 'th';
+                        return 'th';
                 }
             }
             const startDate = new Date(start);
@@ -288,17 +450,17 @@
             const endMonth = endDate.toLocaleDateString('en-US', { month: 'long' });
             const endYear = endDate.getFullYear();
 
-            if (startYear !== endYear){
+            if (startYear !== endYear) {
                 return `${startMonth} ${startDay}${startDaySuffix}, ${startYear}-${endMonth} ${endDay}${endDaySuffix}, ${endYear}`;
-            }else if (startMonth !== endMonth){
+            } else if (startMonth !== endMonth) {
                 return `${startMonth} ${startDay}${startDaySuffix}-${endMonth} ${endDay}${endDaySuffix}, ${startYear}`;
-            }else if (startDay !== endDay){
+            } else if (startDay !== endDay) {
                 return `${startMonth} ${startDay}${startDaySuffix}-${endDay}${endDaySuffix}, ${startYear}`;
-            }else{
+            } else {
                 return `${startMonth} ${startDay}${startDaySuffix}, ${startYear}`;
             }
             return `${startMonth} ${startDay} ${startDaySuffix}, ${startYear}`
-            
+
         }
 
         function renderMain(article) {
@@ -306,18 +468,18 @@
             const mainContentWrapper = document.getElementById('main-content-wrapper');
             const mainImageContainer = document.getElementById('main-image-container');
             const mainImage = document.getElementById('main-image');
-            
+
             if (article.photos && article.photos.length > 0) {
                 mainImage.src = article.photos[0];
                 mainImage.alt = article.title;
                 mainImageContainer.style.display = "block";
-                
+
                 // Load image to get natural dimensions and adjust layout
-                mainImage.onload = function() {
+                mainImage.onload = function () {
                     const naturalWidth = this.naturalWidth;
                     const naturalHeight = this.naturalHeight;
                     const aspectRatio = naturalWidth / naturalHeight;
-                    
+
                     if (aspectRatio < 1) {
                         // Portrait images - side by side layout on desktop
                         mainImageContainer.style.width = '350px';
@@ -361,10 +523,11 @@
                     const photoDiv = document.createElement('div');
                     photoDiv.className = 'group relative overflow-hidden rounded-sm shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer';
                     photoDiv.innerHTML = `
-                        <img src="${photoSrc}" alt="${article.title} - Photo ${index + 2}" 
-                             class="w-full h-full object-cover aspect-square group-hover:scale-110 transition-transform duration-300">
-                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
-                    `;
+                                <img src="${photoSrc}" alt="${article.title} - Photo ${index + 2}"
+                                     onerror="this.src='assets/images/placeholder.jpg'"
+                                     class="w-full h-full object-cover aspect-square group-hover:scale-110 transition-transform duration-300">
+                                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
+                            `;
                     // Optional: Add click to view full size
                     photoDiv.addEventListener('click', () => {
                         window.open(photoSrc, '_blank');
@@ -461,11 +624,11 @@
                     linkEl.rel = 'noopener noreferrer';
                     linkEl.className = 'px-6 py-2.5 bg-slate-900 text-white text-xs font-bold uppercase tracking-widest hover:bg-blue-900 transition rounded-sm inline-flex items-center gap-2';
                     linkEl.innerHTML = `
-                        <span>${link.source || link.label || 'View Link'}</span>
-                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                        </svg>
-                    `;
+                                <span>${link.source || link.label || 'View Link'}</span>
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                </svg>
+                            `;
                     externalLinksContainer.appendChild(linkEl);
                 });
                 externalLinksSection.style.display = 'block';
@@ -508,7 +671,7 @@
             }
         }
 
-        
+
 
         let currentPage = 1;
         const eventsPerPage = 9;
@@ -546,30 +709,30 @@
                 const shortDesc = event.desc ? event.desc.split('\n')[0].substring(0, 120) + '...' : '';
 
                 card.innerHTML = `
-                    <div class="bg-white rounded-lg shadow-sm border border-slate-100 overflow-hidden group-hover:shadow-lg group-hover:border-blue-500/30 transition-all duration-300 h-full">
-                        ${photo ? `
-                            <div class="relative h-48 overflow-hidden">
-                                <img src="${photo}" alt="${event.title}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                                <div class="absolute top-3 left-3">
-                                    <span class="bg-blue-900 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest">${categoryLabel}</span>
+                            <div class="bg-white rounded-lg shadow-sm border border-slate-100 overflow-hidden group-hover:shadow-lg group-hover:border-blue-500/30 transition-all duration-300 h-full">
+                                ${photo ? `
+                                    <div class="relative h-48 overflow-hidden">
+                                        <img src="${photo}" alt="${event.title}" onerror="this.src='assets/images/placeholder.jpg'" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                                        <div class="absolute top-3 left-3">
+                                            <span class="bg-blue-900 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest">${categoryLabel}</span>
+                                        </div>
+                                    </div>
+                                ` : `
+                                    <div class="h-48 bg-gradient-to-br from-blue-50 to-slate-100 flex items-center justify-center">
+                                        <span class="bg-blue-900 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest">${categoryLabel}</span>
+                                    </div>
+                                `}
+                                <div class="p-6">
+                                    <div class="text-xs text-slate-400 mb-2">${eventDate}</div>
+                                    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-900 transition-colors line-clamp-2">${event.title}</h3>
+                                    ${shortDesc ? `<div class="markdown text-sm text-slate-600 line-clamp-2 mb-3">${marked.parse(shortDesc)}</div>` : ''}
+                                    ${event.place ? `<div class="text-xs text-slate-500 flex items-center gap-1">
+                                        <span>📍</span>
+                                        <span class="line-clamp-1">${event.place}</span>
+                                    </div>` : ''}
                                 </div>
                             </div>
-                        ` : `
-                            <div class="h-48 bg-gradient-to-br from-blue-50 to-slate-100 flex items-center justify-center">
-                                <span class="bg-blue-900 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest">${categoryLabel}</span>
-                            </div>
-                        `}
-                        <div class="p-6">
-                            <div class="text-xs text-slate-400 mb-2">${eventDate}</div>
-                            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-900 transition-colors line-clamp-2">${event.title}</h3>
-                            ${shortDesc ? `<p class="text-sm text-slate-600 line-clamp-2 mb-3">${shortDesc}</p>` : ''}
-                            ${event.place ? `<div class="text-xs text-slate-500 flex items-center gap-1">
-                                <span>📍</span>
-                                <span class="line-clamp-1">${event.place}</span>
-                            </div>` : ''}
-                        </div>
-                    </div>
-                `;
+                        `;
 
                 galleryList.appendChild(card);
             });
@@ -583,12 +746,11 @@
 
             // Previous button
             const prevBtn = document.createElement('button');
-            prevBtn.className = `px-4 py-2 rounded-md border border-slate-300 text-sm font-medium transition-colors ${
-                currentPage === 1 
-                    ? 'bg-slate-100 text-slate-400 cursor-not-allowed' 
-                    : 'bg-white text-slate-700 hover:bg-slate-50 hover:border-blue-500'
-            }`;
-            prevBtn.textContent = 'Previous';
+            prevBtn.className = `px-4 py-2 rounded-md border border-slate-300 text-sm font-medium transition-colors ${currentPage === 1
+                ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
+                : 'bg-white text-slate-700 hover:bg-slate-50 hover:border-blue-500'
+                }`;
+            prevBtn.textContent = '<';
             prevBtn.disabled = currentPage === 1;
             prevBtn.addEventListener('click', () => {
                 if (currentPage > 1) {
@@ -629,11 +791,10 @@
             // Page number buttons
             for (let i = startPage; i <= endPage; i++) {
                 const pageBtn = document.createElement('button');
-                pageBtn.className = `px-3 py-2 rounded-md border text-sm font-medium transition-colors ${
-                    i === currentPage
-                        ? 'bg-blue-900 text-white border-blue-900'
-                        : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-50 hover:border-blue-500'
-                }`;
+                pageBtn.className = `px-3 py-2 rounded-md border text-sm font-medium transition-colors ${i === currentPage
+                    ? 'bg-blue-900 text-white border-blue-900'
+                    : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-50 hover:border-blue-500'
+                    }`;
                 pageBtn.textContent = i;
                 pageBtn.addEventListener('click', () => {
                     renderEventsGallery(i);
@@ -663,12 +824,11 @@
 
             // Next button
             const nextBtn = document.createElement('button');
-            nextBtn.className = `px-4 py-2 rounded-md border border-slate-300 text-sm font-medium transition-colors ${
-                currentPage === totalPages 
-                    ? 'bg-slate-100 text-slate-400 cursor-not-allowed' 
-                    : 'bg-white text-slate-700 hover:bg-slate-50 hover:border-blue-500'
-            }`;
-            nextBtn.textContent = 'Next';
+            nextBtn.className = `px-4 py-2 rounded-md border border-slate-300 text-sm font-medium transition-colors ${currentPage === totalPages
+                ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
+                : 'bg-white text-slate-700 hover:bg-slate-50 hover:border-blue-500'
+                }`;
+            nextBtn.textContent = '>';
             nextBtn.disabled = currentPage === totalPages;
             nextBtn.addEventListener('click', () => {
                 if (currentPage < totalPages) {
@@ -709,6 +869,43 @@
                 });
             }
         });
+
+        (function () {
+            const btn = document.getElementById("projectsMegaBtn");
+            const panel = document.getElementById("projectsMegaPanel");
+            const closeBtn = document.getElementById("projectsMegaClose");
+
+            if (!btn || !panel) return;
+
+            function openMenu() {
+                panel.classList.remove("hidden");
+                btn.setAttribute("aria-expanded", "true");
+            }
+
+            function closeMenu() {
+                panel.classList.add("hidden");
+                btn.setAttribute("aria-expanded", "false");
+            }
+
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                panel.classList.contains("hidden") ? openMenu() : closeMenu();
+            });
+
+            closeBtn?.addEventListener("click", closeMenu);
+
+            // 바깥 클릭 시 닫기
+            document.addEventListener("click", (e) => {
+                if (!panel.contains(e.target) && !btn.contains(e.target)) {
+                    closeMenu();
+                }
+            });
+
+            // ESC로 닫기
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeMenu();
+            });
+        })();
     </script>
 </body>
 </html>

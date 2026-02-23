@@ -48,7 +48,7 @@
       ],
       "photo": "assets/images/people/2.jpg",
       "research": "",
-      "projects": [ "CAUS", "PrismX", "중견" ]
+      "projects": [ "CAUS", "중견" ]
     },
     {
       "id": 3,
@@ -89,7 +89,7 @@
       "edu": [
         "B.S. in Economics and Data Science, University of Seoul"
       ],
-      "projects": [ "CAUS", "PrismX" ],
+      "projects": [ "CAUS" ],
       "photo": "assets/images/people/5.jpg"
     },
     {
@@ -114,7 +114,7 @@
       "edu": [
         "B.S. in Business Administration, University of Southern California"
       ],
-      "projects": [ "CAUS", "VIGILANT" ],
+      "projects": [ "CAUS" ],
       "photo": "assets/images/people/7.jpg"
     },
     {
@@ -126,7 +126,7 @@
       "edu": [
         "B.S. in Psychology, University of Utah"
       ],
-      "projects": [ "CAUS", "PrismX" ],
+      "projects": [ "CAUS" ],
       "photo": "assets/images/people/8.jpg"
     },
     {
@@ -138,7 +138,7 @@
       "edu": [
         "B.A. in Data Science, UC Berkeley"
       ],
-      "projects": [ "CAUS", "PrismX", "중견" ],
+      "projects": [ "CAUS", "중견" ],
       "photo": "assets/images/people/9.jpg"
     },
     {
@@ -150,7 +150,7 @@
       "edu": [
         "B.S. in Civil Engineering, Kyoto University"
       ],
-      "projects": [ "CAUS", "VIGILANT" ],
+      "projects": [ "CAUS" ],
       "photo": "assets/images/people/10.jpg"
     },
     {
@@ -192,6 +192,113 @@
       ],
       "projects": [ "BP" ],
       "photo": "assets/images/people/songhayoon.jpg"
+    },
+    {
+      "id": 104,
+      "name": "Jihye NA",
+      "link": "https://www.linkedin.com/in/jihye-na-comet/",
+      "role": "Ph.D. Candidate",
+      "from": "2026.03~",
+      "email": "jhna01@kaist.ac.kr",
+      "edu": [
+        ""
+      ],
+      "projects": [ "CAUS" ],
+      "photo": "assets/images/people/jihyena.JPG"
+    },
+    {
+      "id": 105,
+      "name": "Thi Thao Vy Bui",
+      "link": "https://www.linkedin.com/in/vy-bui-ba0a181aa/",
+      "role": "M.S. Candidate",
+      "from": "2025.03~",
+      "email": "btthaovy124@kaist.ac.kr",
+      "edu": [
+        ""
+      ],
+      "projects": [ "CAUS" ],
+      "photo": "assets/images/people/vy.JPG"
+    },
+    {
+      "id": 106,
+      "name": "Jaewoo Jeong",
+      "link": "jaewoo97.github.io",
+      "role": "Ph.D. Candidate",
+      "email": "jeong207@kaist.ac.kr",
+      "edu": [
+        ""
+      ],
+      "projects": [ "CAUS" ],
+      "photo": "assets/images/people/jaewoojeong.png"
+    },
+    {
+      "id": 107,
+      "name": "Minjun Kang",
+      "link": "https://sites.google.com/view/minjun-kang",
+      "role": "Ph.D. Candidate",
+      "email": "kmmj2005@kaist.ac.kr",
+      "edu": [
+        ""
+      ],
+      "projects": [ "CAUS" ],
+      "photo": "assets/images/people/minjunkang.jpg"
+    },
+    {
+      "id": 108,
+      "name": "Lucas Liebe",
+      "role": "Ph.D. Candidate",
+      "email": "lucasliebe@kaist.ac.kr",
+      "edu": [
+        ""
+      ],
+      "projects": [ "CAUS" ],
+      "photo": "assets/images/people/lucas.jpg"
+    },
+    {
+      "id": 109,
+      "name": "Taeyoung Yun",
+      "link": "https://dbsxodud-11.github.io/",
+      "role": "Ph.D. Candidate",
+      "email": "99yty@kaist.ac.kr",
+      "edu": [
+        ""
+      ],
+      "projects": [ "CAUS" ],
+      "photo": "assets/images/people/taeyoungyun.jpg"
+    },
+    {
+      "id": 110,
+      "name": "Kanghoon Lee",
+      "link": "https://www.linkedin.com/in/kanghoon-lee-675053204/",
+      "role": "Ph.D. Candidate",
+      "email": "leehoon@kaist.ac.kr",
+      "edu": [
+        ""
+      ],
+      "projects": [ "CAUS" ],
+      "photo": "assets/images/people/kanghoonlee.jpg"
+    },
+    {
+      "id": 111,
+      "name": "Inhyuck Song",
+      "role": "M.S. Candidate",
+      "email": "son9ih@kaist.ac.kr",
+      "edu": [
+        ""
+      ],
+      "projects": [ "CAUS" ],
+      "photo": "assets/images/people/inhyucksong.jpg"
+    },
+    {
+      "id": 112,
+      "name": "Huijae Kim",
+      "role": "Ph.D. Candidate",
+      "email": "heejae6021@kaist.ac.kr",
+      "edu": [
+        ""
+      ],
+      "projects": [ "CAUS" ],
+      "photo": "assets/images/people/huijaekim.jpg"
     }
   ],
   "aluminiData": [
