@@ -195,6 +195,18 @@
       "name": "Jiwon Park",
       "projects": [ "CAUS", "BP" ],
       "photo": "assets/images/people/35.JPG"
+    },
+    {
+      "id": "yiseo-yoon",
+      "name": "Yiseo Yoon",
+      "projects": [ "CAUS", "BP" ],
+      "photo": "assets/images/people/yiseo_yoon.jpg"
+    },
+    {
+      "id": "seyeon-jeong",
+      "name": "Seyeon Jeong",
+      "projects": [ "CAUS", "BP" ],
+      "photo": "assets/images/people/seyeon_jeong.jpg"
     }
   ]
 }

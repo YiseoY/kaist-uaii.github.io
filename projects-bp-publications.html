@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Publications | BP@KAIST — Brain Pool Fellowship Program</title>
+
+    <style>
+      :root {
+        --bg: #0b1220;
+        --bg-2: #111a2e;
+        --surface: #ffffff;
+        --surface-2: #f7f9fc;
+        --surface-3: #eef3f9;
+
+        --text: rgba(15, 23, 42, 0.96);
+        --muted: rgba(15, 23, 42, 0.68);
+        --muted-2: rgba(15, 23, 42, 0.52);
+
+        --on-hero: rgba(255, 255, 255, 0.96);
+        --on-hero-muted: rgba(255, 255, 255, 0.78);
+
+        --brand: #2f6bff;
+        --brand-strong: #1f56e0;
+
+        --stroke: rgba(15, 23, 42, 0.12);
+        --divider: rgba(15, 23, 42, 0.08);
+
+        --shadow-sm: 0 8px 24px rgba(15, 23, 42, 0.06);
+        --shadow-md: 0 20px 50px rgba(15, 23, 42, 0.08);
+        --shadow-lg: 0 28px 80px rgba(0, 0, 0, 0.18);
+
+        --radius-sm: 14px;
+        --radius-md: 20px;
+        --radius-lg: 28px;
+
+        --container: 1180px;
+        --header-offset: 96px;
+
+        --h1: clamp(34px, 4.8vw, 58px);
+        --h2: clamp(26px, 2.8vw, 34px);
+        --h3: clamp(18px, 2vw, 22px);
+        --body-lg: clamp(16px, 1.6vw, 19px);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          Helvetica,
+          Arial,
+          "Apple SD Gothic Neo",
+          "Noto Sans KR",
+          "Malgun Gothic",
+          sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top, rgba(47, 107, 255, 0.05), transparent 28%),
+          #f5f7fb;
+        line-height: 1.65;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: none;
+      }
+
+      a:focus-visible,
+      button:focus-visible {
+        outline: 3px solid rgba(47, 107, 255, 0.28);
+        outline-offset: 3px;
+        border-radius: 12px;
+      }
+
+      .container {
+        width: min(var(--container), calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .section[id],
+      .hero[id] {
+        scroll-margin-top: var(--header-offset);
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(245, 247, 251, 0.78);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        min-height: 72px;
+      }
+
+      .logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        white-space: nowrap;
+      }
+
+      .logo-mark {
+        width: 11px;
+        height: 11px;
+        border-radius: 999px;
+        background: var(--brand);
+        box-shadow: 0 0 0 8px rgba(47, 107, 255, 0.12);
+      }
+
+      .logo-sub {
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        align-items: center;
+      }
+
+      nav a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 0 14px;
+        border-radius: 999px;
+        color: var(--muted);
+        font-weight: 800;
+        transition:
+          background 0.18s ease,
+          color 0.18s ease,
+          transform 0.18s ease;
+      }
+
+      nav a:hover,
+      nav a.active {
+        background: rgba(15, 23, 42, 0.05);
+        color: var(--text);
+        transform: translateY(-1px);
+      }
+
+      .hero {
+        position: relative;
+        min-height: 58vh;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        background: #0b1220;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 75% 24%, rgba(47, 107, 255, 0.22), transparent 24%),
+          radial-gradient(circle at 18% 30%, rgba(255, 255, 255, 0.08), transparent 18%),
+          linear-gradient(135deg, #0b1220 0%, #111a2e 50%, #162440 100%);
+        transform: scale(1.02);
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(
+            180deg,
+            rgba(8, 13, 24, 0.34) 0%,
+            rgba(8, 13, 24, 0.58) 55%,
+            rgba(8, 13, 24, 0.82) 100%
+          );
+      }
+
+      .hero-inner {
+        position: relative;
+        z-index: 1;
+        width: min(var(--container), calc(100% - 32px));
+        padding: 96px 0 84px;
+        text-align: center;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 38px;
+        padding: 0 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        color: var(--on-hero-muted);
+        background: rgba(255, 255, 255, 0.06);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.01em;
+      }
+
+      .hero h1 {
+        margin: 18px auto 14px;
+        max-width: 13ch;
+        font-size: var(--h1);
+        line-height: 1.05;
+        letter-spacing: -0.04em;
+        color: var(--on-hero);
+      }
+
+      .hero p {
+        margin: 0 auto;
+        max-width: 70ch;
+        color: var(--on-hero-muted);
+        font-size: var(--body-lg);
+      }
+
+      main {
+        position: relative;
+        z-index: 2;
+        margin-top: -24px;
+      }
+
+      .section {
+        padding: 42px 0;
+      }
+
+      .section-shell {
+        background: rgba(255, 255, 255, 0.84);
+        border: 1px solid rgba(15, 23, 42, 0.06);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md);
+        padding: 34px;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 26px;
+        padding: 0 8px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 10px;
+        color: var(--brand-strong);
+        font-size: 13px;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--brand);
+        box-shadow: 0 0 0 6px rgba(47, 107, 255, 0.12);
+      }
+
+      .section-title {
+        margin: 0;
+        font-size: var(--h2);
+        line-height: 1.15;
+        letter-spacing: -0.03em;
+        font-weight: 900;
+      }
+
+      .section-sub {
+        margin: 10px auto 0;
+        max-width: 72ch;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .pub-list {
+        display: grid;
+        gap: 16px;
+      }
+
+      .pub-card {
+        padding: 22px;
+        border-radius: var(--radius-md);
+        background: linear-gradient(180deg, #ffffff 0%, #f9fbfe 100%);
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        box-shadow: var(--shadow-sm);
+        transition:
+          transform 0.18s ease,
+          box-shadow 0.18s ease,
+          border-color 0.18s ease;
+      }
+
+      .pub-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 24px 48px rgba(15, 23, 42, 0.10);
+        border-color: rgba(47, 107, 255, 0.18);
+      }
+
+      .pub-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .pub-type {
+        display: inline-flex;
+        align-items: center;
+        min-height: 30px;
+        padding: 0 10px;
+        border-radius: 999px;
+        background: rgba(47, 107, 255, 0.08);
+        color: var(--brand-strong);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .pub-year {
+        color: var(--muted);
+        font-weight: 800;
+        font-size: 14px;
+        white-space: nowrap;
+      }
+
+      .pub-title {
+        margin: 14px 0 8px;
+        font-size: 21px;
+        line-height: 1.28;
+        letter-spacing: -0.02em;
+        font-weight: 900;
+      }
+
+      .pub-authors {
+        margin: 0;
+        color: var(--text);
+        font-size: 14px;
+      }
+
+      .pub-venue {
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .pub-abstract {
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .pub-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 16px;
+      }
+
+      .btn-line {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40px;
+        padding: 0 14px;
+        border-radius: 999px;
+        background: #fff;
+        border: 1px solid rgba(15, 23, 42, 0.10);
+        color: var(--text);
+        font-weight: 800;
+        transition:
+          transform 0.18s ease,
+          border-color 0.18s ease,
+          background 0.18s ease;
+      }
+
+      .btn-line:hover {
+        transform: translateY(-1px);
+        border-color: rgba(47, 107, 255, 0.20);
+        background: rgba(47, 107, 255, 0.04);
+      }
+
+      footer {
+        padding: 24px 0 38px;
+      }
+
+      .footer-inner {
+        text-align: center;
+        color: var(--muted);
+        font-size: 13px;
+        display: grid;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(15, 23, 42, 0.06);
+        border-radius: 22px;
+        box-shadow: var(--shadow-sm);
+        padding: 26px 20px;
+      }
+
+      .footer-title {
+        margin: 0;
+        color: var(--text);
+        font-weight: 900;
+        font-size: 16px;
+      }
+
+      .contact {
+        display: grid;
+        gap: 6px;
+      }
+
+      .contact span {
+        color: var(--text);
+        font-weight: 900;
+      }
+
+      .contact a {
+        color: var(--brand);
+        font-weight: 900;
+      }
+
+      @media (max-width: 640px) {
+        :root {
+          --header-offset: 120px;
+        }
+
+        .header-inner {
+          min-height: auto;
+          padding: 14px 0;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        nav ul {
+          flex-wrap: wrap;
+        }
+
+        nav a {
+          min-height: 40px;
+          padding: 0 12px;
+          font-size: 14px;
+        }
+
+        .hero-inner {
+          padding: 92px 0 72px;
+        }
+
+        .section-shell {
+          padding: 26px 20px;
+        }
+
+        .pub-top {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-inner">
+          <a class="logo" href="prjoects-bp.html#home" aria-label="BP@KAIST Home">
+            <span class="logo-mark" aria-hidden="true"></span>
+            <span>BP@KAIST</span>
+            <span class="logo-sub">Brain Pool Fellowship Program</span>
+          </a>
+
+          <nav aria-label="Primary Navigation">
+            <ul>
+              <li><a href="projects-bp.html#home">Home</a></li>
+              <li><a href="projects-bp.html#about">About</a></li>
+              <li><a href="projects-bp.html#research">Research</a></li>
+              <li><a href="projects-bp.html#people">People</a></li>
+              <li><a href="projects-bp-events.html">Events</a></li>
+              <li><a class="active" href="projects-bp-publications.html">Publications</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero" id="top" aria-label="Publications Hero">
+      <div class="hero-inner">
+        <div class="hero-badge">Research Output and Scholarship</div>
+        <h1>Publications and academic contributions</h1>
+        <p>
+          Review representative publications, working papers, and scholarly
+          outputs related to Urban AI, simulation, climate risk, mobility, and
+          intelligent urban systems.
+        </p>
+      </div>
+    </section>
+
+    <main>
+      <section class="section" id="publications" aria-labelledby="publications-title">
+        <div class="container">
+          <div class="section-shell">
+            <div class="section-header">
+              <div class="eyebrow">Selected Publications</div>
+              <h2 class="section-title" id="publications-title">
+                Research publications and ongoing work
+              </h2>
+              <p class="section-sub">
+                The entries below are sample publication cards designed to match
+                the BP@KAIST visual system. Replace titles, venues, and links
+                with actual records from your publication list.
+              </p>
+            </div>
+
+            <div class="pub-list">
+              <article class="pub-card">
+                <div class="pub-top">
+                  <div class="pub-type">Journal Article</div>
+                  <div class="pub-year">2026</div>
+                </div>
+                <h3 class="pub-title">
+                  Urban AI for Quantitative Diagnosis of Mobility and Spatial Inequality
+                </h3>
+                <p class="pub-authors">
+                  Yoonjin Yoon, Soh Young In, Soojean Han, et al.
+                </p>
+                <p class="pub-venue">
+                  Journal of Urban Data Science
+                </p>
+                <p class="pub-abstract">
+                  This study proposes an Urban AI framework for diagnosing
+                  uneven mobility access and spatial inequality through
+                  simulation-based urban analytics and multi-source data fusion.
+                </p>
+                <div class="pub-actions">
+                  <a class="btn-line" href="#">View Paper</a>
+                  <a class="btn-line" href="#">DOI</a>
+                </div>
+              </article>
+
+              <article class="pub-card">
+                <div class="pub-top">
+                  <div class="pub-type">Conference Paper</div>
+                  <div class="pub-year">2026</div>
+                </div>
+                <h3 class="pub-title">
+                  Climate Risk Forecasting for Urban Infrastructure Using Spatial AI
+                </h3>
+                <p class="pub-authors">
+                  Soh Young In, Research Team, BP@KAIST
+                </p>
+                <p class="pub-venue">
+                  International Conference on Urban Intelligence and Resilience
+                </p>
+                <p class="pub-abstract">
+                  The paper develops a spatially differentiated climate risk
+                  framework for urban infrastructure, combining environmental
+                  exposure modeling with scenario-based policy evaluation.
+                </p>
+                <div class="pub-actions">
+                  <a class="btn-line" href="#">View Paper</a>
+                  <a class="btn-line" href="#">Project Page</a>
+                </div>
+              </article>
+
+              <article class="pub-card">
+                <div class="pub-top">
+                  <div class="pub-type">Working Paper</div>
+                  <div class="pub-year">2025</div>
+                </div>
+                <h3 class="pub-title">
+                  Agent-Based Urban Simulation for Distributed Physical AI Systems
+                </h3>
+                <p class="pub-authors">
+                  Soojean Han and Collaborators
+                </p>
+                <p class="pub-venue">
+                  BP@KAIST Working Paper Series
+                </p>
+                <p class="pub-abstract">
+                  This working paper examines how large-scale agent-based models
+                  can be integrated with distributed autonomous infrastructure
+                  control for adaptive urban decision environments.
+                </p>
+                <div class="pub-actions">
+                  <a class="btn-line" href="#">Read Abstract</a>
+                  <a class="btn-line" href="#">Download PDF</a>
+                </div>
+              </article>
+
+              <article class="pub-card">
+                <div class="pub-top">
+                  <div class="pub-type">Policy Report</div>
+                  <div class="pub-year">2025</div>
+                </div>
+                <h3 class="pub-title">
+                  Urban AI and Policy Experimentation for Complex City Systems
+                </h3>
+                <p class="pub-authors">
+                  Urban AI Institute, KAIST
+                </p>
+                <p class="pub-venue">
+                  Institutional Research Report
+                </p>
+                <p class="pub-abstract">
+                  A strategic report outlining how Urban AI can support
+                  policy experimentation, model-based governance, and
+                  evidence-driven responses to climate crisis, urban imbalance,
+                  and compound disaster risks.
+                </p>
+                <div class="pub-actions">
+                  <a class="btn-line" href="#">View Report</a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-inner">
+          <h3 class="footer-title">Contact</h3>
+          <div class="contact">
+            <div>
+              <span>Location:</span> KAIST W16, 291, Daehak-ro, Yuseong-gu,
+              Daejeon, Republic of Korea
+            </div>
+            <div>
+              <span>Email:</span>
+              <a href="mailto:urban@kaist.ac.kr">urban@kaist.ac.kr</a>
+            </div>
+          </div>
+          <div>&copy; 2026 Urban AI Institute. All rights reserved.</div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

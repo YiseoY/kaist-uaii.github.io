@@ -1,0 +1,1196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BP@KAIST — Brain Pool Fellowship Program</title>
+
+    <style>
+      :root {
+        --bg: #0b1220;
+        --bg-2: #111a2e;
+        --surface: #ffffff;
+        --surface-2: #f7f9fc;
+        --surface-3: #eef3f9;
+
+        --text: rgba(15, 23, 42, 0.96);
+        --muted: rgba(15, 23, 42, 0.68);
+        --muted-2: rgba(15, 23, 42, 0.52);
+
+        --on-hero: rgba(255, 255, 255, 0.96);
+        --on-hero-muted: rgba(255, 255, 255, 0.78);
+
+        --brand: #2f6bff;
+        --brand-strong: #1f56e0;
+        --brand-soft: rgba(47, 107, 255, 0.12);
+
+        --stroke: rgba(15, 23, 42, 0.12);
+        --stroke-soft: rgba(15, 23, 42, 0.08);
+        --divider: rgba(15, 23, 42, 0.08);
+
+        --shadow-sm: 0 8px 24px rgba(15, 23, 42, 0.06);
+        --shadow-md: 0 20px 50px rgba(15, 23, 42, 0.08);
+        --shadow-lg: 0 28px 80px rgba(0, 0, 0, 0.18);
+
+        --radius-sm: 14px;
+        --radius-md: 20px;
+        --radius-lg: 28px;
+
+        --container: 1180px;
+
+        --h1: clamp(36px, 5vw, 64px);
+        --h2: clamp(26px, 2.8vw, 34px);
+        --h3: clamp(18px, 2vw, 22px);
+        --body-lg: clamp(16px, 1.6vw, 19px);
+        --body: 15px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          Helvetica,
+          Arial,
+          "Apple SD Gothic Neo",
+          "Noto Sans KR",
+          "Malgun Gothic",
+          sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(
+            circle at top,
+            rgba(47, 107, 255, 0.05),
+            transparent 28%
+          ),
+          #f5f7fb;
+        line-height: 1.65;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: none;
+      }
+
+      a:focus-visible,
+      button:focus-visible {
+        outline: 3px solid rgba(47, 107, 255, 0.28);
+        outline-offset: 3px;
+        border-radius: 12px;
+      }
+
+      .container {
+        width: min(var(--container), calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(245, 247, 251, 0.78);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        min-height: 72px;
+      }
+
+      .logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        white-space: nowrap;
+      }
+
+      .logo-mark {
+        width: 11px;
+        height: 11px;
+        border-radius: 999px;
+        background: var(--brand);
+        box-shadow: 0 0 0 8px rgba(47, 107, 255, 0.12);
+      }
+
+      .logo-sub {
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        align-items: center;
+      }
+
+      nav a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 0 14px;
+        border-radius: 999px;
+        color: var(--muted);
+        font-weight: 800;
+        transition:
+          background 0.18s ease,
+          color 0.18s ease,
+          transform 0.18s ease;
+      }
+
+      nav a:hover {
+        background: rgba(15, 23, 42, 0.05);
+        color: var(--text);
+        transform: translateY(-1px);
+      }
+
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        background: #0b1220;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url("./assets/background-bp.png");
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        transform: scale(1.03);
+        filter: saturate(0.92) contrast(1.05) brightness(0.82);
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            circle at 50% 24%,
+            rgba(47, 107, 255, 0.18),
+            transparent 28%
+          ),
+          linear-gradient(
+            180deg,
+            rgba(8, 13, 24, 0.52) 0%,
+            rgba(8, 13, 24, 0.72) 42%,
+            rgba(8, 13, 24, 0.9) 100%
+          );
+      }
+
+      .hero-inner {
+        position: relative;
+        z-index: 1;
+        width: min(var(--container), calc(100% - 32px));
+        padding: 110px 0 96px;
+        text-align: center;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 38px;
+        padding: 0 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        color: var(--on-hero-muted);
+        background: rgba(255, 255, 255, 0.06);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.01em;
+      }
+
+      .hero h1 {
+        margin: 18px auto 14px;
+        max-width: 14ch;
+        font-size: var(--h1);
+        line-height: 1.04;
+        letter-spacing: -0.04em;
+        color: var(--on-hero);
+      }
+
+      .hero p {
+        margin: 0 auto;
+        max-width: 68ch;
+        color: var(--on-hero-muted);
+        font-size: var(--body-lg);
+      }
+
+      .hero-actions {
+        margin-top: 28px;
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 18px;
+        border-radius: 999px;
+        font-weight: 900;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--on-hero);
+        transition:
+          transform 0.18s ease,
+          background 0.18s ease,
+          border-color 0.18s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .btn.primary {
+        background: linear-gradient(180deg, #3f7bff 0%, #2f6bff 100%);
+        border-color: rgba(47, 107, 255, 0.55);
+        box-shadow: 0 16px 30px rgba(47, 107, 255, 0.28);
+      }
+
+      .hero-meta {
+        margin-top: 38px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .hero-meta-item {
+        padding: 16px 18px;
+        text-align: left;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--on-hero);
+        backdrop-filter: blur(8px);
+      }
+
+      .hero-meta-label {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: rgba(255, 255, 255, 0.62);
+      }
+
+      .hero-meta-value {
+        font-size: 15px;
+        font-weight: 800;
+        line-height: 1.45;
+      }
+
+      .scroll-hint {
+        position: absolute;
+        left: 50%;
+        bottom: 24px;
+        transform: translateX(-50%);
+        z-index: 1;
+        color: rgba(255, 255, 255, 0.64);
+        font-size: 12px;
+        letter-spacing: 0.03em;
+      }
+
+      main {
+        position: relative;
+        z-index: 2;
+        margin-top: -26px;
+      }
+
+      .section {
+        padding: 42px 0;
+      }
+
+      .section-shell {
+        background: rgba(255, 255, 255, 0.84);
+        border: 1px solid rgba(15, 23, 42, 0.06);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md);
+        padding: 34px;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 26px;
+        padding: 0 8px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 10px;
+        color: var(--brand-strong);
+        font-size: 13px;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--brand);
+        box-shadow: 0 0 0 6px rgba(47, 107, 255, 0.12);
+      }
+
+      .section-title {
+        margin: 0;
+        font-size: var(--h2);
+        line-height: 1.15;
+        letter-spacing: -0.03em;
+        font-weight: 900;
+      }
+
+      .section-sub {
+        margin: 10px auto 0;
+        max-width: 72ch;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .about-card {
+        height: 100%;
+        padding: 26px;
+        border-radius: var(--radius-md);
+        background: linear-gradient(180deg, #ffffff 0%, #f9fbfe 100%);
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .about-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--brand-strong);
+        font-weight: 900;
+        font-size: 13px;
+        letter-spacing: 0.02em;
+      }
+
+      .about-kicker::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: var(--brand);
+      }
+
+      .about-card h4 {
+        margin: 14px 0 10px;
+        font-size: 22px;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+      }
+
+      .about-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .research-item {
+        height: 100%;
+        padding: 24px;
+        border-radius: var(--radius-md);
+        background:
+          linear-gradient(
+            180deg,
+            rgba(47, 107, 255, 0.04),
+            rgba(47, 107, 255, 0.01)
+          ),
+          #ffffff;
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        box-shadow: var(--shadow-sm);
+        transition:
+          transform 0.18s ease,
+          box-shadow 0.18s ease,
+          border-color 0.18s ease;
+      }
+
+      .research-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 24px 48px rgba(15, 23, 42, 0.1);
+        border-color: rgba(47, 107, 255, 0.18);
+      }
+
+      .research-item h3 {
+        margin: 0 0 12px;
+        font-size: 19px;
+        line-height: 1.25;
+        letter-spacing: -0.02em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--brand);
+        box-shadow: 0 0 0 7px rgba(47, 107, 255, 0.12);
+        flex: 0 0 auto;
+      }
+
+      .research-item p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .faculty {
+        margin-top: 18px;
+        padding-top: 14px;
+        border-top: 1px solid var(--divider);
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .faculty strong {
+        color: var(--text);
+        font-weight: 900;
+      }
+
+      .people-groups {
+        display: grid;
+        gap: 28px;
+      }
+
+      .people-group {
+        display: grid;
+        gap: 14px;
+      }
+
+      .people-group + .people-group {
+        padding-top: 8px;
+        border-top: 1px solid var(--divider);
+      }
+
+      .people-group-title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        color: var(--text);
+      }
+
+      .people-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .person {
+        height: 100%;
+        padding: 16px;
+        text-align: center;
+        border-radius: 20px;
+        background: #fff;
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        box-shadow: var(--shadow-sm);
+        transition:
+          transform 0.18s ease,
+          box-shadow 0.18s ease,
+          border-color 0.18s ease;
+      }
+
+      .person:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 22px 40px rgba(15, 23, 42, 0.1);
+        border-color: rgba(47, 107, 255, 0.16);
+      }
+
+      .avatar {
+        width: 100%;
+        max-width: 126px;
+        aspect-ratio: 3 / 4;
+        border-radius: 16px;
+        margin: 0 auto 14px;
+        background: linear-gradient(180deg, #eef3f8, #e7edf5);
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        overflow: hidden;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      }
+
+      .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .person .name {
+        margin: 0;
+        font-size: 15px;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+      }
+
+      .person .title {
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      footer {
+        padding: 24px 0 38px;
+      }
+
+      .footer-inner {
+        text-align: center;
+        color: var(--muted);
+        font-size: 13px;
+        display: grid;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(15, 23, 42, 0.06);
+        border-radius: 22px;
+        box-shadow: var(--shadow-sm);
+        padding: 26px 20px;
+      }
+
+      .footer-title {
+        margin: 0;
+        color: var(--text);
+        font-weight: 900;
+        font-size: 16px;
+      }
+
+      .contact {
+        display: grid;
+        gap: 6px;
+      }
+
+      .contact span {
+        color: var(--text);
+        font-weight: 900;
+      }
+
+      .contact a {
+        color: var(--brand);
+        font-weight: 900;
+      }
+
+      .empty-state {
+        grid-column: 1 / -1;
+        padding: 14px 16px;
+        border-radius: 16px;
+        background: var(--surface-2);
+        border: 1px dashed rgba(15, 23, 42, 0.14);
+        color: var(--muted-2);
+        font-size: 14px;
+        text-align: center;
+      }
+
+      .error-box {
+        padding: 16px 18px;
+        border: 1px solid rgba(15, 23, 42, 0.12);
+        border-radius: 16px;
+        background: #fff;
+        color: rgba(15, 23, 42, 0.85);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .error-box strong {
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      @media (max-width: 1080px) {
+        .hero-meta,
+        .grid-3,
+        .people-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 860px) {
+        .about-grid,
+        .grid-3,
+        .hero-meta {
+          grid-template-columns: 1fr;
+        }
+
+        .people-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .section-shell {
+          padding: 26px 20px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .header-inner {
+          min-height: auto;
+          padding: 14px 0;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        nav ul {
+          flex-wrap: wrap;
+        }
+
+        nav a {
+          min-height: 40px;
+          padding: 0 12px;
+          font-size: 14px;
+        }
+
+        .hero-inner {
+          padding: 96px 0 82px;
+        }
+
+        .hero h1 {
+          max-width: 100%;
+        }
+
+        .people-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .avatar {
+          max-width: 180px;
+        }
+
+        .section[id],
+        .hero[id] {
+          scroll-margin-top: 96px;
+        }
+      }
+    </style>
+  </head>
+
+  <script>
+    (function () {
+      const isIndexPage =
+        /(?:^|\/)(index\.html)?$/.test(location.pathname) ||
+        location.pathname.endsWith("/");
+
+      const navLinks = document.querySelectorAll("a[data-nav]");
+
+      navLinks.forEach((link) => {
+        const target = link.getAttribute("data-nav");
+        if (!target) return;
+
+        if (isIndexPage) {
+          link.setAttribute("href", `#${target}`);
+        } else {
+          link.setAttribute("href", `index.html#${target}`);
+        }
+      });
+
+      const currentPage = location.pathname.split("/").pop() || "index.html";
+
+      document.querySelectorAll("a[data-page]").forEach((link) => {
+        const href = link.getAttribute("href");
+        if (!href) return;
+
+        if (href === currentPage) {
+          link.classList.add("active");
+        }
+      });
+    })();
+  </script>
+
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-inner">
+          <a class="logo" href="#home" aria-label="BP@KAIST Home">
+            <span class="logo-mark" aria-hidden="true"></span>
+            <span>BP@KAIST</span>
+            <span class="logo-sub">Brain Pool Fellowship Program</span>
+          </a>
+
+          <nav aria-label="Primary Navigation">
+            <ul>
+              <li><a data-nav="home" href="#home">Home</a></li>
+              <li><a data-nav="about" href="#about">About</a></li>
+              <li><a data-nav="research" href="#research">Research</a></li>
+              <li><a data-nav="people" href="#people">People</a></li>
+              <li>
+                <a data-page="events" href="projects-bp-events.html">Events</a>
+              </li>
+              <li>
+                <a data-page="publications" href="projects-bp-publications.html"
+                  >Publications</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero" id="home" aria-label="Hero">
+      <div class="hero-inner">
+        <div class="hero-badge">Global Research Collaboration at KAIST</div>
+
+        <h1>Brain Pool Fellowship for Urban AI Research</h1>
+
+        <p>
+          Building high-impact interdisciplinary collaboration across geospatial
+          intelligence, climate AI, and physical AI to advance resilient,
+          data-driven, and human-centered urban systems.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="projects-bp-events.html"
+            >Explore Events</a
+          >
+          <a class="btn" href="projects-bp-publications.html"
+            >View Publications</a
+          >
+        </div>
+
+        <div class="hero-meta" aria-label="Program Highlights">
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Program Focus</span>
+            <div class="hero-meta-value">
+              International fellowship and collaborative research
+            </div>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Institution</span>
+            <div class="hero-meta-value">Urban AI Institute, KAIST</div>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Research Scope</span>
+            <div class="hero-meta-value">
+              Urban AI for geospatial intelligence, climate resilience, and
+              physical urban systems
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-hint">Scroll ↓</div>
+    </section>
+
+    <main>
+      <section class="section" id="about" aria-labelledby="about-title">
+        <div class="container">
+          <div class="section-shell">
+            <div class="section-header">
+              <h2 class="section-title" id="about-title">About the Program</h2>
+            </div>
+
+            <div class="about-grid">
+              <article class="about-card">
+                <div class="about-kicker">BP Fellowship Program</div>
+                <h4>Advancing global research excellence in Korea</h4>
+                <p>
+                  The Brain Pool Fellowship Program invites outstanding
+                  international scientists to work with Korean universities,
+                  research institutes, and industry partners where advanced
+                  expertise is most needed. Through collaborative research, the
+                  program is designed to generate high-impact outcomes, promote
+                  the internationalization of Korea’s research environment,
+                  cultivate emerging talent, and expand enduring global research
+                  networks.
+                </p>
+              </article>
+
+              <article class="about-card">
+                <div class="about-kicker">Urban AI Institute</div>
+                <h4>
+                  Building the analytical foundation for next-generation urban
+                  intelligence
+                </h4>
+                <p>
+                  The Urban AI Institute aims to establish an Urban AI
+                  technology framework capable of quantitatively diagnosing and
+                  anticipating complex urban problems. It develops simulation
+                  structures for analyzing interactions among population
+                  dynamics, mobility patterns, and environmental conditions,
+                  while laying the groundwork for algorithms and models that
+                  enable policy experimentation. Through this approach, the
+                  institute seeks to build a long-term research foundation for
+                  addressing climate risk, urban inequality, and compound urban
+                  disasters.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="research" aria-labelledby="research-title">
+        <div class="container">
+          <div class="section-shell">
+            <div class="section-header">
+              <h2 class="section-title" id="research-title">
+                Research Domains
+              </h2>
+            </div>
+
+            <div class="grid-3">
+              <article class="research-item">
+                <h3>
+                  <span class="dot" aria-hidden="true"></span>Geospatial AI
+                </h3>
+                <p>
+                  Develops Urban AI models for diagnosing social imbalance
+                  through synthetic population generation, LLM-based mobility
+                  forecasting, and urban air mobility site analysis, with a
+                  focus on spatial dynamics, accessibility, and uneven urban
+                  conditions.
+                </p>
+                <div class="faculty">
+                  <div><strong>Lead Faculty:</strong> Prof. Yoonjin Yoon</div>
+                </div>
+              </article>
+
+              <article class="research-item">
+                <h3><span class="dot" aria-hidden="true"></span>Climate AI</h3>
+                <p>
+                  Builds analytical frameworks for assessing disaster
+                  vulnerability in urban physical infrastructure, predicting
+                  spatially differentiated climate risks, and evaluating
+                  infrastructure investment and policy scenarios for resilient
+                  urban adaptation.
+                </p>
+                <div class="faculty">
+                  <div><strong>Lead Faculty:</strong> Prof. Soh Young In</div>
+                </div>
+              </article>
+
+              <article class="research-item">
+                <h3><span class="dot" aria-hidden="true"></span>Physical AI</h3>
+                <p>
+                  Integrates distributed autonomous infrastructure control with
+                  large-scale agent-based modeling to connect physical urban
+                  systems with intelligent decision-making architectures for
+                  complex and adaptive urban environments.
+                </p>
+                <div class="faculty">
+                  <div><strong>Lead Faculty:</strong> Prof. Soojean Han</div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="people" aria-labelledby="people-title">
+        <div class="container">
+          <div class="section-shell">
+            <div class="section-header">
+              <h2 class="section-title" id="people-title">People</h2>
+            </div>
+
+            <div
+              class="people-groups"
+              aria-live="polite"
+              aria-busy="true"
+              id="people-groups"
+            >
+              <section class="people-group" aria-labelledby="faculty-title">
+                <h3 class="people-group-title" id="faculty-title">Faculty</h3>
+                <div class="people-grid" id="faculty-grid"></div>
+              </section>
+
+              <section class="people-group" aria-labelledby="researchers-title">
+                <h3 class="people-group-title" id="researchers-title">
+                  Researchers
+                </h3>
+                <div class="people-grid" id="researchers-grid"></div>
+              </section>
+
+              <section class="people-group" aria-labelledby="staff-title">
+                <h3 class="people-group-title" id="staff-title">Staff</h3>
+                <div class="people-grid" id="staff-grid"></div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-inner">
+          <h3 class="footer-title">Contact</h3>
+          <div class="contact">
+            <div>
+              <span>Location:</span> KAIST W16, 291, Daehak-ro, Yuseong-gu,
+              Daejeon, Republic of Korea
+            </div>
+            <div>
+              <span>Email:</span>
+              <a href="mailto:urban@kaist.ac.kr">urban@kaist.ac.kr</a>
+            </div>
+          </div>
+          <div>&copy; 2026 Urban AI Institute. All rights reserved.</div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const basePath = location.pathname.replace(/\/[^\/]*$/, "");
+
+      const peopleUrl = new URL(
+        "./data/peopleData.json",
+        document.baseURI,
+      ).toString();
+      const collabUrl = new URL(
+        "./data/collabData.json",
+        document.baseURI,
+      ).toString();
+
+      const PLACEHOLDER_DATAURL =
+        "data:image/svg+xml;charset=utf-8," +
+        encodeURIComponent(`
+          <svg xmlns="http://www.w3.org/2000/svg" width="420" height="560" viewBox="0 0 420 560">
+            <defs>
+              <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#eef3f8"/>
+                <stop offset="100%" stop-color="#e3eaf3"/>
+              </linearGradient>
+            </defs>
+            <rect width="420" height="560" fill="url(#g)"/>
+            <circle cx="210" cy="210" r="64" fill="#cbd5e1"/>
+            <rect x="105" y="300" rx="22" ry="22" width="210" height="120" fill="#cbd5e1"/>
+            <text x="50%" y="88%" text-anchor="middle" fill="#64748b"
+              font-family="system-ui, sans-serif" font-size="18">Image not available</text>
+          </svg>
+        `);
+
+      function resolveAssetPath(photo) {
+        const raw = (photo || "").trim();
+        if (!raw) return "";
+        if (/^(https?:)?\/\//i.test(raw) || raw.startsWith("data:")) return raw;
+        const safe = raw.startsWith("/") ? raw.slice(1) : raw;
+        return `${basePath}/${safe}`;
+      }
+
+      function normalizeKey(value) {
+        return String(value || "")
+          .trim()
+          .toLowerCase()
+          .replace(/\s+/g, " ")
+          .replace(/_/g, "-");
+      }
+
+      function normalizePerson(p, fallbackTitle, group) {
+        return {
+          name: p.name || p.fullName || "",
+          title: p.title || p.role || fallbackTitle || "",
+          photo: p.photo || p.image || p.img || "",
+          alt: p.alt || p.name || "",
+          slug: p.slug || p.id || p.key || "",
+          group,
+        };
+      }
+
+      function createPersonCard(person) {
+        const article = document.createElement("article");
+        article.className = "person";
+
+        const avatar = document.createElement("div");
+        avatar.className = "avatar";
+
+        const img = document.createElement("img");
+        img.alt = person.alt || person.name || "Profile photo";
+        img.loading = "lazy";
+        img.decoding = "async";
+
+        const src = resolveAssetPath(person.photo);
+        img.src = src || PLACEHOLDER_DATAURL;
+        img.onerror = function () {
+          this.onerror = null;
+          this.src = PLACEHOLDER_DATAURL;
+        };
+
+        avatar.appendChild(img);
+
+        const name = document.createElement("p");
+        name.className = "name";
+        name.textContent = person.name || "";
+
+        const title = document.createElement("p");
+        title.className = "title";
+        title.textContent = person.title || "";
+
+        article.appendChild(avatar);
+        article.appendChild(name);
+        article.appendChild(title);
+
+        return article;
+      }
+
+      function renderGroup(gridId, people) {
+        const grid = document.getElementById(gridId);
+        if (!grid) return;
+
+        grid.innerHTML = "";
+
+        if (!people.length) {
+          const empty = document.createElement("div");
+          empty.className = "empty-state";
+          empty.textContent = "No entries available.";
+          grid.appendChild(empty);
+          return;
+        }
+
+        people.forEach((person) => {
+          grid.appendChild(createPersonCard(person));
+        });
+      }
+
+      function orderPeople(source, orderedKeys) {
+        return orderedKeys
+          .map((target) => {
+            const key = normalizeKey(target);
+            return source.find((person) => {
+              const nameKey = normalizeKey(person.name);
+              const slugKey = normalizeKey(person.slug);
+              return nameKey === key || slugKey === key;
+            });
+          })
+          .filter(Boolean);
+      }
+
+      async function loadPeople() {
+        const groupsWrapper = document.getElementById("people-groups");
+        if (!groupsWrapper) return;
+
+        try {
+          const [resPeople, resCollab] = await Promise.all([
+            fetch(peopleUrl, { cache: "no-store" }),
+            fetch(collabUrl, { cache: "no-store" }),
+          ]);
+
+          if (!resPeople.ok)
+            throw new Error(`peopleData.json HTTP ${resPeople.status}`);
+          if (!resCollab.ok)
+            throw new Error(`collabData.json HTTP ${resCollab.status}`);
+
+          const peopleJson = await resPeople.json();
+          const collabJson = await resCollab.json();
+
+          const collabProfs = Array.isArray(collabJson.collabProfsData)
+            ? collabJson.collabProfsData
+            : [];
+
+          const labMembers = Array.isArray(peopleJson.labMembersData)
+            ? peopleJson.labMembersData
+            : [];
+
+          const staffs = Array.isArray(collabJson.staffsData)
+            ? collabJson.staffsData
+            : [];
+
+          const facultyMerged = [
+            ...collabProfs.map((p) =>
+              normalizePerson(p, "KAIST Professor", "faculty"),
+            ),
+            ...labMembers.map((p) =>
+              normalizePerson(p, "Professor", "faculty"),
+            ),
+          ].filter((p) => p.name);
+
+          const researchersMerged = labMembers
+            .map((p) => normalizePerson(p, "Researcher", "researchers"))
+            .filter((p) => p.name);
+
+          const staffMerged = staffs
+            .map((p) => normalizePerson(p, "Staff", "staff"))
+            .filter((p) => p.name);
+
+          const facultyOrder = ["Yoonjin Yoon", "soh-young-in", "soojean-han"];
+          const researcherOrder = [
+            "Sungmin Sohn",
+            "Hayoon Song",
+            "Minseok Jeong",
+            "Kwangbin Lee",
+          ];
+          const staffOrder = ["jiwon-park", "yiseo-yoon", "seyeon-jeong"];
+
+          const selectedFaculty = orderPeople(facultyMerged, facultyOrder);
+          const selectedResearchers = orderPeople(
+            researchersMerged,
+            researcherOrder,
+          );
+          const selectedStaff = orderPeople(staffMerged, staffOrder);
+
+          renderGroup("faculty-grid", selectedFaculty);
+          renderGroup("researchers-grid", selectedResearchers);
+          renderGroup("staff-grid", selectedStaff);
+        } catch (e) {
+          console.error(e);
+          groupsWrapper.innerHTML = `
+            <div class="error-box">
+              <strong>People data load failed</strong>
+              <div><b>peopleUrl</b>: ${peopleUrl}</div>
+              <div><b>collabUrl</b>: ${collabUrl}</div>
+              <div style="margin-top:8px;"><b>Error</b>: ${String(e.message || e)}</div>
+            </div>
+          `;
+        } finally {
+          groupsWrapper.setAttribute("aria-busy", "false");
+        }
+      }
+
+      loadPeople();
+    </script>
+  </body>
+</html>
