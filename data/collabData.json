@@ -208,5 +208,22 @@
       "projects": [ "CAUS", "BP" ],
       "photo": "assets/images/people/seyeon_jeong.jpg"
     }
+  ],
+
+  "internationalFellowsData": [
+    {
+      "id": "yu-zhang",
+      "name": "Yu (April) Zhang",
+      "projects": ["Urban AI Governance", "Digital Twin City"],
+      "link": "https://www.linkedin.com/in/yuyu5460/",
+      "photo": "assets/images/collab/Yu Zhang.png"
+    },
+    {
+      "id": "sekyoung-choi",
+      "name": "Esther Sekyoung Choi",
+      "projects": ["Urban AI Governance", "Digital Twin City"],
+      "link": "https://www.wri.org/profile/esther-choi",
+      "photo": "assets/images/collab/Esther Sekyoug Choi.png"
+    }
   ]
 }
