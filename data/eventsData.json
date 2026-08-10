@@ -1,5 +1,5 @@
 ﻿[
-    {
+  {
     "id": "20260803-brain-pool-seminar",
     "title": "Brain Pool Seminar — Contraction Theory & Conformal Inference",
     "category": "seminar",
@@ -160,6 +160,26 @@
     "links": [
       { "label": "View Positions", "href": "apply-postdoc.html" }
     ],
+    "time": ""
+  },
+  {
+    "id": "20260429-caus-regular-meeting",
+    "title": "CAUS Monthly Meeting",
+    "category": "meeting",
+    "start": "2026-04-29",
+    "end": "2026-04-29",
+    "place": "KAIST",
+    "keyword": [
+      "CAUS",
+      "Monthly",
+      "Meeting"
+    ],
+    "desc": "The April CAUS Monthly Meeting featured a student seminar by Ph.D. candidate Kanghoon Lee on “Understanding Urban Spaces for Better Multi-Robot Path Planning,” reviewed CAUS activities from February through April, and assessed second-year KRA progress and deliverables across the center’s major research areas. The meeting also introduced Harvard GSD Urban AI and shared center announcements on the 2026 International Conference on Urban AI, the KCC 2026 Urban AI Workshop, upcoming monthly meetings, and official social media channels. Second-year deliverables were reported at 25 outputs against a target of 19, corresponding to an overall achievement rate of 131.58%.",
+    "photos": [
+      "assets/images/events/monthly_meeting1_2604.jpg",
+      "assets/images/events/monthly_meeting2_2604.jpg"
+    ],
+    "links": [],
     "time": ""
   },
   {
