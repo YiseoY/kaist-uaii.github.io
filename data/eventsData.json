@@ -1,5 +1,29 @@
 ﻿[
   {
+    "id": "20260826-yixin-zhang-seminar",
+    "title": "Planning 15-Minute Living Circles for Green Mobility: Evidence from Mobile Phone Data",
+    "category": "seminar",
+    "start": "2026-08-26",
+    "end": "2026-08-26",
+    "place": "KAIST 본원 W16, 307호",
+    "participants": "Dr. Yixin Zhang, KAIST Urban AI Institute",
+    "keyword": [
+      "15-minute living circles",
+      "Green Mobility",
+      "Mobile Phone Data",
+      "facility planning",
+      "travel behavior"
+    ],
+    "desc": "Drawing on doctoral research, this presentation uses data from 860 15-minute living circles in Tangshan, China, including POI data, mobile-phone mobility data, and interpretable machine-learning methods, to examine how to lay out facilities to promote residents’ green mobility. The research covers key living-circle facilities and layout typologies that encourage green mobility, distance thresholds and street-design conditions affecting walking and cycling for eight facility types, and large language model-based review analysis to reveal patterns and drivers of residents’ bypass behavior when choosing supermarkets and vegetable markets.",
+    "photos": [
+      "assets/images/events/seminar_Yixin Zhang_1.jpg",
+      "assets/images/events/seminar_Yixin Zhang_8.jpg"
+    ],
+    "links": [],
+    "speaker": "Dr. Yixin Zhang",
+    "time": "2:00 PM KST"
+  },
+  {
     "id": "20260803-brain-pool-seminar",
     "title": "Brain Pool Seminar — Contraction Theory & Conformal Inference",
     "category": "seminar",
