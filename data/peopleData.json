@@ -439,6 +439,57 @@
       "labFull": "Complex Systems Design Lab",
       "position": ["Ph.D. Student in Industrial and Systems Engineering"],
       "major": "Industrial and Systems Engineering"
+    },
+    {
+      "id": 113,
+      "name": "Il-Chul Moon",
+      "link": "http://aai.kaist.ac.kr",
+      "role": "KAIST Professor",
+      "current": "Professor, KAIST AX학과",
+      "affiliation": "AX학과",
+      "from": "2026.09~",
+      "email": "icmoon@kaist.ac.kr",
+      "edu": [],
+      "projects": [
+        "CAUS"
+      ],
+      "photo": "assets/images/people/ilchulmoon.jpg",
+      "lab": "AAI Lab",
+      "labFull": "응용인공지능 연구실",
+      "position": ["Professor, KAIST AX학과"],
+      "major": "AX학과",
+      "research": "Modeling and Simulation in Social Phenomena, Defense, and Disasters; Machine Learning on Economic and Text Data; Smart Manufacturing with Smart Things",
+      "keywords": [
+        "DEVS",
+        "social media",
+        "battle experiment",
+        "Agent-Based Simulation",
+        "text mining",
+        "Variational autoencoder",
+        "Agent-based model",
+        "Gaussian process"
+      ]
+    },
+    {
+      "id": 114,
+      "name": "Yixin Zhang",
+      "link": "https://www.linkedin.com/in/yixin-zhang-132a14132/",
+      "role": "Postdoctoral Researcher",
+      "current": "Postdoc, KAIST KUAI",
+      "affiliation": "",
+      "from": "2026.09~",
+      "email": "Sarahzyxll@outlook.com",
+      "edu": [],
+      "projects": [
+        "BP"
+      ],
+      "photo": "assets/images/people/yixinzhang.jpg",
+      "lab": "",
+      "labFull": "",
+      "position": [],
+      "major": "Urban and rural planning",
+      "research": "Living Circles Towards Green Travels: A Study on the Correlation Between Facility Layout and Travel Behavior",
+      "keywords": []
     }
   ],
   "aluminiData": [
